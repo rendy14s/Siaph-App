@@ -10,6 +10,8 @@ import { FileOpener } from '@ionic-native/file-opener';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -17,7 +19,8 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -27,6 +30,8 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
+    FileTransfer,
+    FileOpener,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
