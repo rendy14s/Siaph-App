@@ -1,14 +1,67 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+  <ion-navbar style="height: 7em !important" color="primary">
+    <ion-row class="title-chat">
+        <ion-col width-100>
+            <div class="profile-div" [ngStyle]="{'background-image': 'url(assets/img/banner_jdih_release.png)'}" (click)="perda()">
+            </div>
+        </ion-col>
+    </ion-row>
+</ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding class="body-content">
+  <ion-slides>
+      <ion-slide>
+          <div class="foto-div" [ngStyle]="{'background-image': 'url(assets/img/perda.png)'}" (click)="perda()">
+          </div>
+      </ion-slide>
+      <ion-slide>
+          <div class="foto-div" [ngStyle]="{'background-image': 'url(assets/img/perwal.png)'}" (click)="perwal()">
+          </div>
+      </ion-slide>
+      <ion-slide>
+          <div class="foto-div" [ngStyle]="{'background-image': 'url(assets/img/kepwal.png)'}" (click)="kepwal()">
+          </div>
+      </ion-slide>
+      <ion-slide>
+          <div class="foto-div" [ngStyle]="{'background-image': 'url(assets/img/tracking.png)'}" (click)="tracking()">
+          </div>
+      </ion-slide>
+      <ion-slide>
+          <div class="foto-div" [ngStyle]="{'background-image': 'url(assets/img/galeri.png)'}" (click)="galeri()">
+          </div>
+      </ion-slide>
+      <ion-slide>
+          <div class="foto-div" [ngStyle]="{'background-image': 'url(assets/img/kontak.png)'}" (click)="kontak()">
+          </div>
+      </ion-slide>
+      <ion-slide>
+          <div class="foto-div" [ngStyle]="{'background-image': 'url(assets/img/akun.png)'}" (click)="account()">
+          </div>
+      </ion-slide>
+      <ion-slide>
+          <div class="foto-div" [ngStyle]="{'background-image': 'url(assets/img/update.png)'}" (click)="update()">
+          </div>
+      </ion-slide>
+      <ion-slide>
+          <div class="foto-div" [ngStyle]="{'background-image': 'url(assets/img/profil.png)'}" (click)="profil()">
+          </div>
+      </ion-slide>
+      <ion-slide>
+          <div class="foto-div" [ngStyle]="{'background-image': 'url(assets/img/perpus.png)'}" (click)="perpus()">
+          </div>
+      </ion-slide>
+  </ion-slides>
+
+ 
+<ion-label style="margin-top: -4em; text-align:center; color:white;">Copyright© 2017 Tangerang Selatan Kota</ion-label>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<ion-label style="margin-top: -8em; text-align:center; color:white;">All Right Reserved</ion-label>
+
 </ion-content>
