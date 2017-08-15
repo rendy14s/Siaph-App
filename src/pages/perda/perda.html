@@ -1,0 +1,33 @@
+<!--
+  Generated template for the PerdaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>
+      Peraturan Daerah
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
+
+  <ion-list>
+      <ion-item *ngFor="let datax of posts" (click)="getDownload(datax)">
+        <ion-avatar item-left>
+          <img src="assets/img/logo.png">
+        </ion-avatar>
+        <h2>{{datax.tentang}}</h2>
+        <h3>No Produk Hukum : {{datax.no_produk_hukum}}</h3>
+        <h4>Tahun : {{datax.tahun_pembuatan}}</h4>
+      </ion-item>
+  </ion-list>
+
+</ion-content>
