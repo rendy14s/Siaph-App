@@ -1,0 +1,21 @@
+page-people-detail-view {
+
+    .ion-segment{
+        border-bottom:1px solid #189dae !important;
+    }
+
+    .segment-button {
+        border-style: none;
+        border:0px !important;
+        border-radius: 0px 0px 0px 0px !important;
+        color: #7f7f7f !important;
+    }
+
+    .segment-button.segment-activated{
+        background: #fff !important;
+        color: #189dae !important;
+        border-radius: 0px 0px 0px 0px !important;
+        border-bottom: 2px solid #189dae !important;
+    }
+
+}
