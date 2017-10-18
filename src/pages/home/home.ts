@@ -25,17 +25,7 @@ export class HomePage {
   }
 
   public tracking() {
-    let toast = this.toast.create({
-      message: 'Under Development',
-      duration: 3000,
-      position: 'bottom'
-    });
-    toast.present();
-  }
-
-  public galeri() {
-    console.log('klik');
-    this.navCtrl.push('GaleriPage');
+    this.navCtrl.setRoot('TrackingPage');
   }
 
   public kontak() {
