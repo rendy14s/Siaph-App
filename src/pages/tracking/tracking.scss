@@ -1,6 +1,6 @@
 page-tracking {
     .bg-content {
-        background-color: #498AFF;
+        background-color: #189dae;
     }
     .header-title {
         font-family: 'Times New Roman', Times, serif;
@@ -37,5 +37,13 @@ page-tracking {
         height: 20%;
         overflow-x: auto;
         overflow-y: auto;
+    }
+
+    .btn-footer-action-page {
+        ul {
+            li {
+                min-width: 6em;
+            }
+        }
     }
 }

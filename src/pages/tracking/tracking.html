@@ -12,7 +12,7 @@
   </div>
 
 
-  <div class="row" style="background-color: rgb(125, 168, 243);">
+  <div class="row" style="background-color: #808080">
     <div class="col">No. Surat</div>
     <div class="col">Perihal</div>
     <div class="col">Status</div>
@@ -70,6 +70,12 @@
 </ion-content>
 
 <ion-footer>
-    <button ion-button full round color="light">Login</button>
-    <button ion-button full round color="light">Cancel</button>
-</ion-footer>
+    <ion-toolbar>
+      <div class="btn-footer-action-page">
+        <ul align="center">
+          <li tappable (click)="back()">Back</li>
+          <li tappable (click)="login()">Login</li>
+        </ul>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
