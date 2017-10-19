@@ -11,6 +11,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
 
+import { SDKBrowserModule } from '../shared/sdk/index';
+
+
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { HomePage } from '../pages/home/home';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    SDKBrowserModule.forRoot(),
     HttpModule
   ],
   bootstrap: [IonicApp],

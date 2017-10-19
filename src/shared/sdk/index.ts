@@ -44,7 +44,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CookieBrowser } from './storage/cookie.browser';
 import { StorageBrowser } from './storage/storage.browser';
-import { UserApi } from './services/custom/User';
 import { AclApi } from './services/custom/Acl';
 import { AccesstokenApi } from './services/custom/Accesstoken';
 import { RolemappingApi } from './services/custom/Rolemapping';
@@ -83,7 +82,6 @@ export class SDKBrowserModule {
         LoggerService,
         JSONSearchParams,
         SDKModels,
-        UserApi,
         AclApi,
         AccesstokenApi,
         RolemappingApi,

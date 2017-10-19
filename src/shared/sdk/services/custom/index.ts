@@ -1,5 +1,4 @@
 /* tslint:disable */
-export * from './User';
 export * from './Acl';
 export * from './Accesstoken';
 export * from './Rolemapping';
