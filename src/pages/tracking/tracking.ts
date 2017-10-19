@@ -31,4 +31,12 @@ export class TrackingPage {
     view.present();
   }
 
+  public login() {
+    this.navCtrl.setRoot('LoginPage');
+  }
+
+  public back() {
+    this.navCtrl.setRoot('HomePage');
+  }
+
 }
