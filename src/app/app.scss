@@ -1,195 +1,1145 @@
-// http://ionicframework.com/docs/theming/
-
-
-// App Global Sass
+// http://ionicframework.com/docs/v2/theming/
+// Global CSS
 // --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
+// Put CSS rules here that you want to apply globally.
 //
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+//
+// App Shared Sass variables belong in app.variables.scss.
+
+
+
+// .sfgo, ion-label, .select-text, .btn-footer-action-page  {
+//   font-family: roboto;
+//   font-weight: 300;
+//   color: #000;
+// }
+// ion-content,ion-header,ion-footer{
+//   font-family: roboto !important;
+// }
+
+//VERSI TABLET - START ======================================================================================
+@media screen and (min-width: 600px) { 
+  .item-ios[detail-push] .item-inner, button.item-ios:not([detail-none]) .item-inner, a.item-ios:not([detail-none]) .item-inner{
+    background-image: none;
+  }
+
+  .toolbar-ios-primary .toolbar-title-ios, .toolbar-ios-primary .bar-button-clear-ios, .toolbar-ios-primary .bar-button-default-ios{
+    color:color($colors, primary)!important;
+    font-size: 150%;
+    font-weight: 400;
+  }
+  .toolbar-ios-primary .toolbar-background-ios{
+    background-color: transparent;
+  }
+
+  ion-menu.sidemenu ion-item{
+     background-color: transparent!important;
+      border:none!important;
+  }
+  .item-ios{
+    background-color:transparent;
+  }
+   .no-padding {
+      padding: 0px !important;
+ }
+ .toolbar-md-primary .toolbar-background-md{
+      background: #fff!important;
+ }
+ .toolbar-md-primary .bar-button-clear-md, .toolbar-md-primary .bar-button-default-md, .toolbar-md-primary .bar-button-outline-md, .toolbar-md-primary .toolbar-title-md
+ {
+      color:color($colors, primary)!important;
+      font-size:150%;
+      font-weight:300;
+ }
+.ion-ios-sficon-search:before, .ion-ios-sficon-search-circle:before, .ion-ios-sficon-search-circle-outline:before, .ion-ios-sficon-search-outline:before, .ion-md-sficon-search:before, .ion-md-sficon-search-circle:before, .ion-md-sficon-search-circle-outline:before, .ion-md-sficon-search-outline:before{
+    font-size:20px!important;
+}
+.grid{
+  padding:0!important;
+}
+.header-md::after {
+    display: none;
+}
+.sub-icon {
+  background-color: transparent!important;
+}
+.ion-ios-sficon-magnifier:before, .ion-ios-sficon-magnifier-circle:before, .ion-ios-sficon-magnifier-circle-outline:before, .ion-ios-sficon-magnifier-outline:before, .ion-md-sficon-magnifier:before, .ion-md-sficon-magnifier-circle:before, .ion-md-sficon-magnifier-circle-outline:before, .ion-md-sficon-magnifier-outline:before{
+   margin-right: 0.5em;
+}
+.ion-page{
+  width: 100%!important;
+}
+.ion-md-menu:before{
+  margin-left: 1.1em!important;
+}
+.toolbar-md-primary .toolbar-background-md{
+    border-bottom:1px solid #ccc;
+    //height: 56em;
+}
+.has-refresher > .scroll-content{
+  border: none!important;
+}
+.ion-ios-sficon-ask:before, .ion-ios-sficon-ask-circle:before, .ion-ios-sficon-ask-circle-outline:before, .ion-ios-sficon-ask-outline:before, .ion-md-sficon-ask:before, .ion-md-sficon-ask-circle:before, .ion-md-sficon-ask-circle-outline:before, .ion-md-sficon-ask-outline:before
+{
+  font-size: 0.9em!important;
+}
+}
+@media screen and (min-width: 1500px) { 
+.toolbar-md-primary .bar-button-clear-md, .toolbar-md-primary .bar-button-default-md, .toolbar-md-primary .bar-button-outline-md, .toolbar-md-primary .toolbar-title-md
+ {
+      font-size:150%;
+      font-weight:300;
+ }
+.toolbar-md-primary .toolbar-background-md{
+      border-bottom:1px solid #ccc;
+ }
+}
+//VERSI TABLET - END ======================================================================================
+
+.sub-ttl {
+color:#7d7d7d !important;
+font-size: $font-medium;
+}
+
+ion-label {
+.sm-ttl {
+font-size: 12pt !important;
+color: #7f7f7f !important;
+opacity: 0.5;
+}
+}
+
+.sub-icon {
+color:#7d7d7d;
+}
+
+.sub-text {
+color: color($colors, grey);
+font-size: $font-medium;
+}
+
+.data-employee {
+font-size:12pt !important;
+color:  white !important;
+}
+
+.spc-color {background-color: $spc-color;}
+.act-color {background-color: $act-color;}
+.att-color {background-color: $att-color;}
+
+.item-block { padding-left:0}
+
+.data-list-request {
+ion-avatar.def {
+background-color: color($colors, primary);
+text-align: center;
+line-height: 3.7;
+border-radius: 50%;
+ion-icon { color: #fff; font-size: 30px }
+ion-item{
+ion-label{
+p:last-child { color:#000!important}
+}
+}
+div.alfa-icon {
+color: #fff;
+line-height: 50px;
+font-size: 25px;
+}
+}
+
+}
+
+
+.tip-info {color:color($colors, primary)!important }
+ion-avatar { margin:8px 12px 8px 0px!important; width: 3em!important; height: 3em!important;
+img { width: 50px!important; height:50px!important}
+}
+
+
+.btn-footer-action-page {
+text-align: center;
+margin: 0 auto;
+border-radius:2em;
+ul {
+  margin:0 auto; 
+  padding: 0;
+  li {
+  display:inline-block;
+  margin-right: 1px!important;
+  list-style: none;
+  background-color: color($colors, primary);
+  padding: 1em 1.5em ;
+  color: #fff;
+  margin: 0.5em 0;
+  min-width: 1em;
+  text-transform: capitalize;
+  }
+  .spc-color {background-color:$spc-color}
+  li:first-child { border-radius: 2em 0 0 2em; padding: 1em 1.7em};
+  li:last-child { border-radius: 0 2em 2em 0; padding: 1em 1.7em};
+}
+
+
+}
+.single-btn { li { border-radius:2em!important; min-width: 50%!important}}
+
+.full-btn{
+
+ul {
+li {
+    min-width: 15em;
+  border-radius: 2em !important;
+}
+}
+  
+}
+
+.searchbar-input { border-radius:20px!important; border:1px solid #f7f7f7;}
 
 //============================= stepper css ==================================//
 .mdl-card {
-    max-width: 550px;
-    min-height: 0;
-    margin: 10px auto 20px;
-  }
-  
-  .mdl-card__supporting-text {
-    width: 100%;
-    padding: 0;
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step {
-    width: 25%;
-    /* 100 / no_of_steps */
-  }
-  
-  
-  /* Begin actual mdl-stepper css styles */
-  
-  .mdl-stepper-horizontal-alternative {
-    display: table;
-    width: 100%;
-    margin: 0 auto;
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step {
-    display: table-cell;
-    position: relative;
-    padding: 0 5px;
-  }
-  
-  // .mdl-stepper-horizontal-alternative .mdl-stepper-step:hover,
-  // .mdl-stepper-horizontal-alternative .mdl-stepper-step:active {
-  //   background-color: rgba(0, 0, 0, .06);
-  // }
-  
-  // .mdl-stepper-horizontal-alternative .mdl-stepper-step:active {
-  //   border-radius: 15% / 75%;
-  // }
-  
-  // .mdl-stepper-horizontal-alternative .mdl-stepper-step:first-child:active {
-  //   border-top-left-radius: 0;
-  //   border-bottom-left-radius: 0;
-  // }
-  
-  // .mdl-stepper-horizontal-alternative .mdl-stepper-step:last-child:active {
-  //   border-top-right-radius: 0;
-  //   border-bottom-right-radius: 0;
-  // }
-  
-  // .mdl-stepper-horizontal-alternative .mdl-stepper-step:hover .mdl-stepper-circle {
-  //   background-color: #ccc;
-  // }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step:first-child .mdl-stepper-bar-left,
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step:last-child .mdl-stepper-bar-right {
-    display: none;
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-circle {
-    width: 24px;
-    height: 24px;
-    margin: 0 auto;
-    background-color: #ccc;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 2em;
-    font-size: 12px;
-    color: white;
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step .mdl-stepper-circle {
-    background-color: color($colors,primary);
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step.step-done .mdl-stepper-circle:before {
-    content: "\2714";
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step.step-done .mdl-stepper-circle *,
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step.editable-step .mdl-stepper-circle * {
-    display: none;
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step.editable-step .mdl-stepper-circle {
-    -moz-transform: scaleX(-1);
-    /* Gecko */
-    -o-transform: scaleX(-1);
-    /* Opera */
-    -webkit-transform: scaleX(-1);
-    /* Webkit */
-    transform: scaleX(-1);
-    /* Standard */
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step.editable-step .mdl-stepper-circle:before {
-    content: "\270E";
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-title {
-    margin-top: 16px;
-    font-size: 14px;
-    font-weight: normal;
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-title,
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-optional {
-    text-align: center;
-    color: rgba(0, 0, 0, .15);
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step .mdl-stepper-title {
-    font-weight: 500;
-    color: color($colors, grey);
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step.step-done .mdl-stepper-title,
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step.editable-step .mdl-stepper-title {
-    font-weight: 300;
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-optional {
-    font-size: 12px;
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step .mdl-stepper-optional {
-    color: rgba(0, 0, 0, .54);
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-bar-left,
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-bar-right {
-    position: absolute;
-    top: 11px;
-    height: 1px;
-    border-top: 1px solid #BDBDBD;
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-bar-right {
-    right: 0;
-    left: 50%;
-    margin-left: 20px;
-  }
-  
-  .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-bar-left {
-    left: 0;
-    right: 50%;
-    margin-right: 20px;
-  }
-  
-  //============================= stepper css ==================================//
+max-width: 550px;
+min-height: 0;
+margin: 10px auto 20px;
+}
+
+.mdl-card__supporting-text {
+width: 100%;
+padding: 0;
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step {
+width: 25%;
+/* 100 / no_of_steps */
+}
 
 
-  .btn-footer-action-page {
-    text-align: center;
-    margin: 0 auto;
-    border-radius:2em;
-    ul {
-        margin:0 auto; 
-        padding: 0;
-        li {
-        display:inline-block;
-        margin-right: 1px!important;
-        list-style: none;
-        background-color: color($colors, primary);
-        padding: 1em 1.5em ;
-        color: #fff;
-        margin: 0.5em 0;
-        min-width: 1em;
-        text-transform: capitalize;
-        }
-        .spc-color {background-color:$spc-color}
-        li:first-child { border-radius: 2em 0 0 2em; padding: 1em 1.7em};
-        li:last-child { border-radius: 0 2em 2em 0; padding: 1em 1.7em};
-    }
-    
+/* Begin actual mdl-stepper css styles */
 
+.mdl-stepper-horizontal-alternative {
+display: table;
+width: 100%;
+margin: 0 auto;
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step {
+display: table-cell;
+position: relative;
+padding: 0 5px;
+}
+
+// .mdl-stepper-horizontal-alternative .mdl-stepper-step:hover,
+// .mdl-stepper-horizontal-alternative .mdl-stepper-step:active {
+//   background-color: rgba(0, 0, 0, .06);
+// }
+
+// .mdl-stepper-horizontal-alternative .mdl-stepper-step:active {
+//   border-radius: 15% / 75%;
+// }
+
+// .mdl-stepper-horizontal-alternative .mdl-stepper-step:first-child:active {
+//   border-top-left-radius: 0;
+//   border-bottom-left-radius: 0;
+// }
+
+// .mdl-stepper-horizontal-alternative .mdl-stepper-step:last-child:active {
+//   border-top-right-radius: 0;
+//   border-bottom-right-radius: 0;
+// }
+
+// .mdl-stepper-horizontal-alternative .mdl-stepper-step:hover .mdl-stepper-circle {
+//   background-color: #ccc;
+// }
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step:first-child .mdl-stepper-bar-left,
+.mdl-stepper-horizontal-alternative .mdl-stepper-step:last-child .mdl-stepper-bar-right {
+display: none;
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-circle {
+width: 24px;
+height: 24px;
+margin: 0 auto;
+background-color: #ccc;
+border-radius: 50%;
+text-align: center;
+line-height: 2em;
+font-size: 12px;
+color: white;
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step .mdl-stepper-circle {
+background-color: color($colors,primary);
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step.step-done .mdl-stepper-circle:before {
+content: "\2714";
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step.step-done .mdl-stepper-circle *,
+.mdl-stepper-horizontal-alternative .mdl-stepper-step.editable-step .mdl-stepper-circle * {
+display: none;
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step.editable-step .mdl-stepper-circle {
+-moz-transform: scaleX(-1);
+/* Gecko */
+-o-transform: scaleX(-1);
+/* Opera */
+-webkit-transform: scaleX(-1);
+/* Webkit */
+transform: scaleX(-1);
+/* Standard */
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step.editable-step .mdl-stepper-circle:before {
+content: "\270E";
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-title {
+margin-top: 16px;
+font-size: 14px;
+font-weight: normal;
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-title,
+.mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-optional {
+text-align: center;
+color: rgba(0, 0, 0, .15);
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step .mdl-stepper-title {
+font-weight: 500;
+color: color($colors, grey);
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step.step-done .mdl-stepper-title,
+.mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step.editable-step .mdl-stepper-title {
+font-weight: 300;
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-optional {
+font-size: 12px;
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step .mdl-stepper-optional {
+color: rgba(0, 0, 0, .54);
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-bar-left,
+.mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-bar-right {
+position: absolute;
+top: 11px;
+height: 1px;
+border-top: 1px solid #BDBDBD;
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-bar-right {
+right: 0;
+left: 50%;
+margin-left: 20px;
+}
+
+.mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-bar-left {
+left: 0;
+right: 50%;
+margin-right: 20px;
+}
+
+//============================= stepper css ==================================//
+
+////////////////////////////////////////////////////////////////////////////////////
+
+.platform-ios {
+.tab-segment { padding: 0em}
+}
+
+.center-cropped {
+width: 100px;
+height: 100px;
+background-position: center center;
+background-repeat: no-repeat;
+}
+
+.outstand-stat { border-left:7px solid #7f7f7f }
+.stat1 { color: color($colors,primary)}
+.stat2 { color: color($colors,secondary)}
+.stat3 { color: #666}
+.stat4 { color: color($colors,danger)}
+.progressBar {
+border-radius: 1em; height: 10px; width: 100%; background-color: #ccc;
+.value-ProgressBar { border-radius: 1em; background-color:green; height: 10px; width: 40%;}
+
+}
+.grow { animation: grow 5s forwards}
+.r-txt { text-align: right}
+.l-txt { text-align: left}
+
+// @keyframes grow { from { width: 0%} to { width: 40% } }
+
+// @media(min-width: 320px) {
+//   .element {
+//     width: 85vw;
+//   }
+// }
+
+//REMARK BY RENDY SUTANDY
+// @media(min-width: 768px) {
+
+//   ion-menu,
+//   ion-menu[type=reveal] {
+//     z-index: 80;
+//     display: block;
+//     right: inherit;
+//     width: 21.7em;
+//   }
+//   button[menutoggle] {
+//     display: none;
+
+//   }
+//   .fixed-content {
+//     bottom: 56px;
+//   }
+
+//   .element {
+//     width: 21.8em;
+//   }
+
+//   .scroll-content {
+//     overflow-y: auto;
+//     height: 100%;
+//     width: 80%;
+//     margin-top: 0 !important;
+//   }
+
+//   /*
+//   .scroll-content {
+//     overflow-y: auto;
+//     height: 100%;
+//     margin-top: 0 !important;
+//   }
+//   */
+
+//   .menu-inner {
+//     -webkit-transform: translate3d(0, 0, 0);
+//     transform: translate3d(0, 0, 0);
+//     transform: translateX(0) !important;
+//     >ion-header {
+//       position: relative;
+//     }
+//     >ion-content {
+//       position: relative;
+//     }
+//   }
+
+//   .ion-page {
+//     left: 21.7em;
+//     padding-right: 21.7em;
+//     >ion-header {
+//       position: relative;
+//     }
+//     >ion-content {
+//       position: relative;
+//     }
+//   }
+
+//   .img-icon{
+//     width:20%;
+//     height: 20%;
+//   }
+
+//   .modal-wrapper {
+//       top: 0px;
+//       left: 0px;
+//        display: block;
+//       width: 100%;
+//       height: 100%;
+//     }
+
+//     ion-modal {
+//       padding: 30px;
+//       background: rgba(0,0,0,0.7)
+//     }
+
+// }
+//REMARK BY RENDY SUTANDY
+
+
+
+@font-face {
+font-family: 'sficon';
+src:  url('../assets/siaphicon/sficon.eot?8sheoj');
+src:  url('../assets/siaphicon/sficon.eot?8sheoj#iefix') format('embedded-opentype'),
+url('../assets/siaphicon/sficon.ttf?8sheoj') format('truetype'),
+url('../assets/siaphicon/sficon.woff?8sheoj') format('woff'),
+url('../assets/siaphicon/sficon.svg?8sheoj#sficon') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+// [class^="icon-"],
+// [class*="icon-"],
+// [class^="ion-ios-icon"],
+// [class*="ion-ios-icon"],
+// [class^="ion-md-icon"],
+// [class*="ion-md-icon"]
+[class^="sficon-"],
+[class*="sficon-"]
+
+{
+
+@extend .ion !optional;
+font-family: 'sficon' !important;
+speak: none;
+font-style: normal;
+font-weight: normal;
+font-variant: normal;
+text-transform: none;
+line-height: 1;
+
+/* Better Font Rendering =========== */
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+.sficon-announcesort:before {
+content: "\e900";
+}
+.sficon-ask:before {
+content: "\e901";
+}
+.sficon-backward:before {
+content: "\e902";
+}
+.sficon-barcode:before {
+content: "\e903";
+}
+.sficon-briefcase:before {
+content: "\e904";
+}
+.sficon-briefcasetime:before {
+content: "\e905";
+}
+.sficon-businesstrip:before {
+content: "\e906";
+}
+.sficon-businesstripdec:before {
+content: "\e907";
+}
+.sficon-businesstype:before {
+content: "\e908";
+}
+.sficon-calendar:before {
+content: "\e909";
+}
+.sficon-calendar2:before {
+content: "\e90a";
+}
+.sficon-calendar3:before {
+content: "\e90b";
+}
+.sficon-calendarsingle:before {
+content: "\e90c";
+}
+.sficon-call:before {
+content: "\e90d";
+}
+.sficon-camera:before {
+content: "\e90e";
+}
+.sficon-carddetail:before {
+content: "\e90f";
+}
+.sficon-carddetail2:before {
+content: "\e910";
+}
+.sficon-cardemployee:before {
+content: "\e911";
+}
+.sficon-chart:before {
+content: "\e912";
+}
+.sficon-chat:before {
+content: "\e913";
+}
+.sficon-chatsort:before {
+content: "\e914";
+}
+.sficon-checkdouble:before {
+content: "\e915";
+}
+.sficon-checksingle:before {
+content: "\e916";
+}
+.sficon-clip:before {
+content: "\e917";
+}
+.sficon-clock:before {
+content: "\e918";
+}
+.sficon-clock2:before {
+content: "\e919";
+}
+.sficon-clockbackground:before {
+content: "\e91a";
+}
+.sficon-clockdash:before {
+content: "\e91b";
+}
+.sficon-close:before {
+content: "\e91c";
+}
+.sficon-coin:before {
+content: "\e91d";
+}
+.sficon-comment:before {
+content: "\e91e";
+}
+.sficon-company:before {
+content: "\e91f";
+}
+.sficon-email:before {
+content: "\e920";
+}
+.sficon-email2:before {
+content: "\e921";
+}
+.sficon-employeperson:before {
+content: "\e922";
+}
+.sficon-exit:before {
+content: "\e923";
+}
+.sficon-fillask:before {
+content: "\e924";
+}
+.sficon-fillasksort:before {
+content: "\e925";
+}
+.sficon-fingerprint:before {
+content: "\e926";
+}
+.sficon-flag:before {
+content: "\e927";
+}
+.sficon-flagfill:before {
+content: "\e928";
+}
+.sficon-forward:before {
+content: "\e929";
+}
+.sficon-home:before {
+content: "\e92a";
+}
+.sficon-idcard:before {
+content: "\e92b";
+}
+.sficon-information:before {
+content: "\e92c";
+}
+.sficon-key:before {
+content: "\e92d";
+}
+.sficon-kpi:before {
+content: "\e92e";
+}
+.sficon-leftfill:before {
+content: "\e92f";
+}
+.sficon-love:before {
+content: "\e930";
+}
+.sficon-lovefill:before {
+content: "\e931";
+}
+.sficon-magnifier:before {
+content: "\e932";
+}
+.sficon-menu:before {
+content: "\e933";
+}
+.sficon-molamola:before {
+content: "\e934";
+}
+.sficon-music:before {
+content: "\e935";
+}
+.sficon-notificationsort:before {
+content: "\e936";
+}
+.sficon-orgchart:before {
+content: "\e937";
+}
+.sficon-peopleadd:before {
+content: "\e938";
+}
+.sficon-person:before {
+content: "\e939";
+}
+.sficon-persontime:before {
+content: "\e93a";
+}
+.sficon-phone:before {
+content: "\e93b";
+}
+.sficon-phone2:before {
+content: "\e93c";
+}
+.sficon-pigmoney:before {
+content: "\e93d";
+}
+.sficon-placeholder:before {
+content: "\e93e";
+}
+.sficon-placeholder2:before {
+content: "\e93f";
+}
+.sficon-playbutton:before {
+content: "\e940";
+}
+.sficon-plusadd:before {
+content: "\e941";
+}
+.sficon-rightfill:before {
+content: "\e942";
+}
+.sficon-roundannounce:before {
+content: "\e943";
+}
+.sficon-roundcamera:before {
+content: "\e944";
+}
+.sficon-roundchat:before {
+content: "\e945";
+}
+.sficon-rounddash:before {
+content: "\e946";
+}
+.sficon-roundfillask:before {
+content: "\e947";
+}
+.sficon-roundorg:before {
+content: "\e948";
+}
+.sficon-search:before {
+content: "\e949";
+}
+.sficon-search2:before {
+content: "\e94a";
+}
+.sficon-sent:before {
+content: "\e94b";
+}
+.sficon-setting:before {
+content: "\e94c";
+}
+.sficon-shiftschedule:before {
+content: "\e94d";
+}
+.sficon-star:before {
+content: "\e94e";
+}
+.sficon-starfill:before {
+content: "\e94f";
+}
+.sficon-target:before {
+content: "\e950";
+}
+.sficon-taskcomplete:before {
+content: "\e951";
+}
+.sficon-taskdone:before {
+content: "\e952";
+}
+.sficon-tasktime:before {
+content: "\e953";
+}
+.sficon-taskwrite:before {
+content: "\e954";
+}
+.sficon-top:before {
+content: "\e955";
+}
+.sficon-trash:before {
+content: "\e956";
+}
+.sficon-travel:before {
+content: "\e957";
+}
+.sficon-turning:before {
+content: "\e958";
+}
+.sficon-turningfill:before {
+content: "\e959";
+}
+.sficon-undo:before {
+content: "\e95a";
+}
+.sficon-video:before {
+content: "\e95b";
+}
+.sficon-wallet:before {
+content: "\e95c";
+}
+.sficon-xadevicepin:before {
+content: "\e95d";
+}
+.sficon-xalanguage:before {
+content: "\e95e";
+}
+.sficon-xanotifsetting:before {
+content: "\e95f";
+}
+.sficon-viewoffline:before {
+content: "\e960";
+}
+.sficon-component:before {
+content: "\e961";
+}
+.sficon-download:before {
+content: "\e962";
+}
+.sficon-payprocess:before {
+content: "\e963";
+}
+.sficon-payrolldata:before {
+content: "\e964";
+}
+.sficon-payschedule:before {
+content: "\e965";
+}
+.sficon-tappayslipin:before {
+content: "\e966";
+}
+.sficon-tappayslipout:before {
+content: "\e967";
+}
+.sficon-upload:before {
+content: "\e968";
+}
+.sficon-wizard:before {
+content: "\e969";
+}
+.sficon-write:before {
+content: "\e96a";
+}
+.sficon-people:before {
+content: "\e96b";
+}
+.sficon-placeholderwrong:before {
+content: "\e96c";
+}
+.sficon-sort:before {
+content: "\e96d";
+}
+
+
+@mixin makeIcon($arg, $val) {
+.ion-ios-#{$arg}:before ,
+.ion-ios-#{$arg}-circle:before ,
+.ion-ios-#{$arg}-circle-outline:before ,
+.ion-ios-#{$arg}-outline:before ,
+.ion-md-#{$arg}:before ,
+.ion-md-#{$arg}-circle:before ,
+.ion-md-#{$arg}-circle-outline:before ,
+.ion-md-#{$arg}-outline:before  {
+content: $val;
+font-size: 30px;
+}
+}
+@include makeIcon(sficon-announcesort, "\e900");
+@include makeIcon(sficon-ask, "\e901");
+@include makeIcon(sficon-backward, "\e902");
+@include makeIcon(sficon-barcode, "\e903");
+@include makeIcon(sficon-briefcase, "\e904");
+@include makeIcon(sficon-briefcasetime, "\e905");
+@include makeIcon(sficon-businesstrip, "\e906");
+@include makeIcon(sficon-businesstripdec, "\e907");
+@include makeIcon(sficon-businesstype, "\e908");
+@include makeIcon(sficon-calendar, "\e909");
+@include makeIcon(sficon-calendar2, "\e90a");
+@include makeIcon(sficon-calendar3, "\e90b");
+@include makeIcon(sficon-calendarsingle, "\e90c");
+@include makeIcon(sficon-call, "\e90d");
+@include makeIcon(sficon-camera, "\e90e");
+@include makeIcon(sficon-carddetail, "\e90f");
+@include makeIcon(sficon-carddetail2, "\e910");
+@include makeIcon(sficon-cardemployee, "\e911");
+@include makeIcon(sficon-chart, "\e912");
+@include makeIcon(sficon-chat, "\e913");
+@include makeIcon(sficon-chatsort, "\e914");
+@include makeIcon(sficon-checkdouble, "\e915");
+@include makeIcon(sficon-checksingle, "\e916");
+@include makeIcon(sficon-clip, "\e917");
+@include makeIcon(sficon-clock, "\e918");
+@include makeIcon(sficon-clock2, "\e919");
+@include makeIcon(sficon-clockbackground, "\e91a");
+@include makeIcon(sficon-clockdash, "\e91b");
+@include makeIcon(sficon-close, "\e91c");
+@include makeIcon(sficon-coin, "\e91d");
+@include makeIcon(sficon-comment, "\e91e");
+@include makeIcon(sficon-company, "\e91f");
+@include makeIcon(sficon-email, "\e920");
+@include makeIcon(sficon-email2, "\e921");
+@include makeIcon(sficon-employeperson, "\e922");
+@include makeIcon(sficon-exit, "\e923");
+@include makeIcon(sficon-fillask, "\e924");
+@include makeIcon(sficon-fillasksort, "\e925");
+@include makeIcon(sficon-fingerprint, "\e926");
+@include makeIcon(sficon-flag, "\e927");
+@include makeIcon(sficon-flagfill, "\e928");
+@include makeIcon(sficon-forward, "\e929");
+@include makeIcon(sficon-home, "\e92a");
+@include makeIcon(sficon-idcard, "\e92b");
+@include makeIcon(sficon-information, "\e92c");
+@include makeIcon(sficon-key, "\e92d");
+@include makeIcon(sficon-kpi, "\e92e");
+@include makeIcon(sficon-leftfill, "\e92f");
+@include makeIcon(sficon-love, "\e930");
+@include makeIcon(sficon-lovefill, "\e931");
+@include makeIcon(sficon-magnifier, "\e932");
+@include makeIcon(sficon-menu, "\e933");
+@include makeIcon(sficon-molamola, "\e934");
+@include makeIcon(sficon-music, "\e935");
+@include makeIcon(sficon-notificationsort, "\e936");
+@include makeIcon(sficon-orgchart, "\e937");
+@include makeIcon(sficon-peopleadd, "\e938");
+@include makeIcon(sficon-person, "\e939");
+@include makeIcon(sficon-persontime, "\e93a");
+@include makeIcon(sficon-phone, "\e93b");
+@include makeIcon(sficon-phone2, "\e93c");
+@include makeIcon(sficon-pigmoney, "\e93d");
+@include makeIcon(sficon-placeholder, "\e93e");
+@include makeIcon(sficon-placeholder2, "\e93f");
+@include makeIcon(sficon-playbutton, "\e940");
+@include makeIcon(sficon-plusadd, "\e941");
+@include makeIcon(sficon-rightfill, "\e942");
+@include makeIcon(sficon-roundannounce, "\e943");
+@include makeIcon(sficon-roundcamera, "\e944");
+@include makeIcon(sficon-roundchat, "\e945");
+@include makeIcon(sficon-rounddash, "\e946");
+@include makeIcon(sficon-roundfillask, "\e947");
+@include makeIcon(sficon-roundorg, "\e948");
+@include makeIcon(sficon-search, "\e949");
+@include makeIcon(sficon-search2, "\e94a");
+@include makeIcon(sficon-sent, "\e94b");
+@include makeIcon(sficon-setting, "\e94c");
+@include makeIcon(sficon-shiftschedule, "\e94d");
+@include makeIcon(sficon-star, "\e94e");
+@include makeIcon(sficon-starfill, "\e94f");
+@include makeIcon(sficon-target, "\e950");
+@include makeIcon(sficon-taskcomplete, "\e951");
+@include makeIcon(sficon-taskdone, "\e952");
+@include makeIcon(sficon-tasktime, "\e953");
+@include makeIcon(sficon-taskwrite, "\e954");
+@include makeIcon(sficon-top, "\e955");
+@include makeIcon(sficon-trash, "\e956");
+@include makeIcon(sficon-travel, "\e957");
+@include makeIcon(sficon-turning, "\e958");
+@include makeIcon(sficon-turningfill, "\e959");
+@include makeIcon(sficon-undo, "\e95a");
+@include makeIcon(sficon-video, "\e95b");
+@include makeIcon(sficon-wallet, "\e95c");
+@include makeIcon(sficon-xadevicepin, "\e95d");
+@include makeIcon(sficon-xalanguage, "\e95e");
+@include makeIcon(sficon-xanotifsetting, "\e95f");
+@include makeIcon(sficon-viewoffline, "\e960");
+@include makeIcon(sficon-component, "\e961");
+@include makeIcon(sficon-download, "\e962");
+@include makeIcon(sficon-payprocess, "\e963");
+@include makeIcon(sficon-payrolldata, "\e964");
+@include makeIcon(sficon-payschedule, "\e965");
+@include makeIcon(sficon-tappayslipin, "\e966");
+@include makeIcon(sficon-tappayslipout, "\e967");
+@include makeIcon(sficon-upload, "\e968");
+@include makeIcon(sficon-wizard, "\e969");
+@include makeIcon(sficon-write, "\e96a");
+@include makeIcon(sficon-people, "\e96b");
+@include makeIcon(sficon-placeholderwrong, "\e96c");
+@include makeIcon(sficon-sort, "\e96d");
+
+
+.modal-wrapper {
+top: 0px;
+left: 0px;
+// display: block;
+width: 100%;
+height: 100%;
+}
+ion-modal {
+background: rgba(0,0,0,0.7)
+}
+
+
+/*==================================GLOBAL CSS======================================== */
+
+
+
+.btn-rounded-full {
+margin: auto;
+width: 18em;
+height: 3em;
+border-top-left-radius: 1.5em;
+border-top-right-radius: 1.5em;
+border-bottom-left-radius: 1.5em;
+border-bottom-right-radius: 1.5em;
+color: white;
+background-color: #189dae;
+text-align: center;
+}
+
+.thin-btn-text {
+margin: 0;
+font-weight: 100;
+font-size: 1.5em;
+line-height: 2em;
+}
+.ion-segment{
+border-bottom:1px solid #189dae !important;
+}
+.segment-button {
+border-style: none;
+border:0px !important;
+border-radius: 0px 0px 0px 0px !important;
+color: #7f7f7f !important;
+
+}
+.segment-button.segment-activated{
+background: #fff !important;
+color: #189dae !important;
+border-radius: 0px 0px 0px 0px !important;
+border-bottom: 2px solid #189dae !important;
+}
+.fab-close-active.fab-close-icon{
+background: #666 !important;
+}
+
+
+/*==================================HEADING======================================== */
+
+h1, h2, h3, h4, h5, h6, p {
+
+font-weight: normal;
+color: #737373;
+}
+
+h1 {
+}
+
+h2 {
+}
+
+.alert-md .alert-message{
+text-align: center !important;
+}
+
+.alert-md .alert-button{
+margin:0px auto !important;
+// width: 50% !important;
+}
+.icon-navbar{
+color: #fff !important;
+font-size: 30px !important;
+}
+.text-alipsis{
+width: 150px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis !important;
+text-transform: capitalize !important;
+}
+
+ion-footer{
+background: #fff !important;
+border: none;
+.toolbar-background-md{
+background: #fff !important;
+
+}
+.toolbar-background-ios{
+background: #fff !important;
+
+}
+}
+.button-md { box-shadow: none !important; }
+.searchbar-md .searchbar-input { color: color($colors, grey)!important; box-shadow: none !important; }
+.wrapper-list-no-data{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto !important;
+  height: 100%;
+  width: 100%;
+  p{
+  text-align: center;
+  color: color($colors, grey);
+  margin-bottom: 30% !important;
+      img{
+          width: 40% !important;
+      }
+  }
+}
+
+// ion-label { color: color($colors, grey) !important; }
+// ion-input, ion-textarea, ion-select, ion-option, ion-datetime, control-messages { color: color($colors, grey) !important; }
+ion-input, ion-textarea, ion-select, ion-option, ion-datetime, control-messages { font-size: 1em !important; color: color($colors, grey) !important; }
+// ion-input ::-webkit-input-placeholder, ion-textarea ::-webkit-input-placeholder, ion-select ::-webkit-input-placeholder, ion-option ::-webkit-input-placeholder, ion-datetime ::-webkit-input-placeholder, control-messages ::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: color($colors, grey) !important; }
+// ion-input ::-moz-placeholder, ion-textarea ::-moz-placeholder, ion-select ::-moz-placeholder, ion-option ::-moz-placeholder, ion-datetime ::-moz-placeholder, control-messages ::-moz-placeholder { /* Firefox 19+ */ color: color($colors, grey) !important; }
+// ion-input :-ms-input-placeholder, ion-textarea :-ms-input-placeholder, ion-select :-ms-input-placeholder, ion-option :-ms-input-placeholder, ion-datetime :-ms-input-placeholder, control-messages :-ms-input-placeholder { /* IE 10+ */ color: color($colors, grey) !important; }
+// ion-input :-moz-placeholder, ion-textarea :-moz-placeholder, ion-select :-moz-placeholder, ion-option :-moz-placeholder, ion-datetime :-moz-placeholder, control-messages :-moz-placeholder {/* Firefox 18- */ color: color($colors, grey) !important;
+// }
+
+.icon-input-calendar:after {
+content: "\e90a";
+font-family: sficon;
+font-size: 28px;
+text-decoration: inherit; 
+position: absolute;
+right: 0;
+}
+
+.icon-input-employee:after {
+content: "\e922";
+font-family: sficon;
+font-size: 28px;
+text-decoration: inherit; 
+position: absolute;
+right: 0;
+}
+
+.icon-input-people:after {
+content: "\e96b";
+font-family: sficon;
+font-size: 28px;
+text-decoration: inherit; 
+position: absolute;
+right: 0;
+}
+
+.icon-input-component:after {
+content: "\e961";
+font-family: sficon;
+font-size: 28px;
+text-decoration: inherit; 
+position: absolute;
+right: 0;
+}
+
+.item-list-bottom{
+margin-bottom: 5em !important;
+}
+
+@media screen and (min-width: 600px){
+.split-pane-md.split-pane-visible > .tutupSizeMenu{
+max-width: 5em !important;
+}
+
+
+  .split-pane-md.split-pane-visible > .bukaSizeMenu{
+  max-width: 15em !important;
+  }
 }

@@ -9,6 +9,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import { FileOpener } from '@ionic-native/file-opener';
 
 import { MyApp } from './app.component';
+import { TabsPage } from '../pages/tabs/tabs';
 
 
 import { SDKBrowserModule } from '../shared/sdk/index';
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    TabsPage
   ],
   providers: [
     StatusBar,

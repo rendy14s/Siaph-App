@@ -6,13 +6,81 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Dashboard</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-TES
+<ion-content #content>
+  <div class="filter">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3 class="grid-header" tappable (click)="changeType('REQ')">
+          <div>
+            <div class="col-grid">
+              <span class="sficon-home btn-head-home"></span>
+              <!-- <span [hidden]="loadingRun?.request == false" class="spinner-head-home">
+                <ion-spinner name="ios"></ion-spinner>
+              </span> -->
+              <!-- <div class="div-img-circle-notification"> -->
+                <!--<div class="img-circle-notification">
+                2
+              </div>-->
+              <!-- </div> -->
+              <br/>
+            </div>
+            <small>Home</small>
+          </div>
+        </ion-col>
+
+        <ion-col col-3 class="grid-header" tappable (click)="changeType('PST')">
+          <div class="col-grid">
+            <span class="sficon-people btn-head-home"></span>
+            <!-- <span [hidden]="loadingRun?.post == false" class="spinner-head-home">
+              <ion-spinner name="ios"></ion-spinner>
+            </span> -->
+            <!-- <div class="div-img-circle-notification"> -->
+              <!--<div class="img-circle-notification">
+              1
+            </div>-->
+            <!-- </div> -->
+            <br/>
+          </div>
+          <small>Manage Account</small>
+        </ion-col>
+
+        <ion-col col-3 class="grid-header" tappable (click)="changeType('ALR')">
+          <div class="col-grid">
+            <span class="sficon-payrolldata btn-head-home"></span>
+            <!-- <span [hidden]="loadingRun?.alert == false" class="spinner-head-home">
+              <ion-spinner name="ios"></ion-spinner>
+            </span> -->
+            <!-- <div class="div-img-circle-notification"> -->
+              <!--<div class="img-circle-notification">
+              1
+            </div>-->
+            <!-- </div> -->
+            <br/>
+          </div>
+          <small>Tracking</small>
+        </ion-col>
+
+        <ion-col col-3 class="grid-header" tappable (click)="changeType('CHT')">
+          <span class="sficon-employeperson btn-head-home"></span>
+          <!-- <span [hidden]="loadingRun?.chats == false" class="spinner-head-home">
+            <ion-spinner name="ios"></ion-spinner>
+          </span> -->
+          <!-- <div class="div-img-circle-notification"> -->
+            <!--<div class="img-circle-notification">
+            1
+          </div>-->
+          <!-- </div> -->
+          <br/>
+          <small>My Account</small>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
