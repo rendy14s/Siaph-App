@@ -22,4 +22,8 @@ export class DashboardTrackingPage {
     console.log('ionViewDidLoad DashboardTrackingPage');
   }
 
+  public backHome() {
+    this.navCtrl.setRoot('HomePage');
+  }
+
 }

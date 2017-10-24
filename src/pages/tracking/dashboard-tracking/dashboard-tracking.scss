@@ -117,6 +117,7 @@ page-dashboard-tracking {
            margin-left: 2.5em !important;
        }
        .col-grid {
+           margin-bottom: -20%;        
            border-right: 1px solid #EEEEEE;
        }
        .my-overlay {
@@ -184,4 +185,43 @@ page-dashboard-tracking {
                padding-right: 0 !important;
            }
        }
+
+    .ion-segment {
+        border-bottom: 0px solid #189dae !important;
+        // margin-bottom: 9em;
+        margin-top: 2em;
+    }
+
+    .segment-button:first-of-type {
+        margin-right: 0;
+        height: 6em;
+    }
+
+    .segment-button.segment-activated {
+        background: #fff !important;
+        color: #189dae !important;
+        border-radius: 0px 0px 0px 0px !important;
+        border-bottom: 2px solid #ffffff !important;
+    }
+
+    .segment-ios .segment-button:not(:first-of-type) {
+        border-left-width: 0;
+        margin-top: 1%;
+    }
+
+    .segment-ios .segment-button {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        width: 0;
+        height: 34rem !important;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #189dae;
+        font-size: 1.3rem;
+        line-height: 3rem;
+        color: #189dae;
+        background-color: transparent;
+    }
 }
