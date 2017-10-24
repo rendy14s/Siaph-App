@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the TrackingPage page.
  *
@@ -16,14 +16,21 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 export class TrackingPage {
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public storage: Storage
   ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TrackingPage');
+    this.storage.ready().then(() => {
+      this.storage.get('siaphCredential').then((siaphCredential) => {
+        if (siaphCredential != null || siaphCredential != undefined) {
+          this.navCtrl.setRoot('DashboardTrackingPage');
+        }
+      });
+    });
   }
 
   public modalShow() {
