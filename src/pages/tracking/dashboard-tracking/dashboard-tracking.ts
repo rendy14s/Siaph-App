@@ -15,6 +15,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DashboardTrackingPage {
 
+  public tab: string = "HOME";
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -24,6 +26,10 @@ export class DashboardTrackingPage {
 
   public backHome() {
     this.navCtrl.setRoot('HomePage');
+  }
+
+  public detailTracking() {
+    this.navCtrl.push('DetailTrackingPage');
   }
 
 }

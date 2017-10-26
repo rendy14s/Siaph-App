@@ -18,7 +18,7 @@
 
 
 <ion-content #content>
-  <ion-segment class="col-grid" [(ngModel)]="tab" class="ion-segment" (ionChange)="segmentChanged($event)">
+  <ion-segment class="col-grid" [(ngModel)]="tab" class="ion-segment">
     <ion-segment-button value="HOME">
       <div>
         <div class="col-grid">
@@ -28,31 +28,165 @@
       </div>
     </ion-segment-button>
 
-    <ion-segment-button value="HOME">
-        <div>
-          <div class="col-grid">
-            <span class="sficon-people btn-head-home"></span>
-          </div>
-          <small>Manage Account</small>
+    <ion-segment-button value="MACCOUNT">
+      <div>
+        <div class="col-grid">
+          <span class="sficon-people btn-head-home"></span>
         </div>
-      </ion-segment-button>
+        <small>Manage Account</small>
+      </div>
+    </ion-segment-button>
 
-      <ion-segment-button value="HOME">
-          <div>
-            <div class="col-grid">
-              <span class="sficon-payrolldata btn-head-home"></span>
-            </div>
-            <small>Tracking</small>
-          </div>
-        </ion-segment-button>
+    <ion-segment-button value="TRACKING">
+      <div>
+        <div class="col-grid">
+          <span class="sficon-payrolldata btn-head-home"></span>
+        </div>
+        <small>Tracking</small>
+      </div>
+    </ion-segment-button>
 
-        <ion-segment-button value="HOME">
-            <div>
-              <div class="col-grid">
-                <span class="sficon-employeperson btn-head-home"></span>
-              </div>
-              <small>My Account</small>
-            </div>
-          </ion-segment-button>
+    <ion-segment-button value="ACCOUNT">
+      <div>
+        <div class="col-grid">
+          <span class="sficon-employeperson btn-head-home"></span>
+        </div>
+        <small>My Account</small>
+      </div>
+    </ion-segment-button>
   </ion-segment>
+
+
+  <div [ngSwitch]="tab">
+    <ion-list *ngSwitchCase="'HOME'">
+      <ion-card>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/image/logo-tangsel.png">
+          </ion-avatar>
+          <h2>Marty McFly</h2>
+          <p>November 5, 1955</p>
+        </ion-item>
+
+        <img src="assets/image/tes.png" height="70px">
+
+        <ion-card-content>
+          <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
+            Whoa. This is heavy.</p>
+        </ion-card-content>
+
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear small>
+              <ion-icon name="sficon-carddetail"></ion-icon>
+              <div>Detail</div>
+            </button>
+          </ion-col>
+          <!-- <ion-col text-center>
+              <ion-note>
+                12 Oct 2017
+              </ion-note>
+            </ion-col> -->
+        </ion-row>
+      </ion-card>
+
+      <ion-card>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/image/logo-tangsel.png">
+          </ion-avatar>
+          <h2>Marty McFly</h2>
+          <p>November 5, 1955</p>
+        </ion-item>
+
+        <img src="assets/image/tes.png" height="70px">
+
+        <ion-card-content>
+          <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
+            Whoa. This is heavy.</p>
+        </ion-card-content>
+
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear small>
+              <ion-icon name="sficon-carddetail"></ion-icon>
+              <div>Detail</div>
+            </button>
+          </ion-col>
+          <!-- <ion-col text-center>
+              <ion-note>
+                12 Oct 2017
+              </ion-note>
+            </ion-col> -->
+        </ion-row>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'MACCOUNT'">
+      MANAGE ACCOUNT
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'TRACKING'">
+      <ion-list>
+        <ion-item [navPush]="DetailTrackingPage">
+          <ion-avatar item-start>
+            <img src="assets/image/logo-tangsel.png">
+          </ion-avatar>
+          <h2>Cher</h2>
+          <p>Ugh. As if.</p>
+          <ion-note item-end>12 Oct 2017</ion-note>
+        </ion-item>
+
+        <ion-item (click)="detailTracking()">
+          <ion-avatar item-start>
+            <img src="assets/image/logo-tangsel.png">
+          </ion-avatar>
+          <h2>Cher</h2>
+          <p>Ugh. As if.</p>
+          <ion-note item-end>12 Oct 2017</ion-note>
+        </ion-item>
+
+        <ion-item (click)="detailTracking()">
+          <ion-avatar item-start>
+            <img src="assets/image/logo-tangsel.png">
+          </ion-avatar>
+          <h2>Cher</h2>
+          <p>Ugh. As if.</p>
+          <ion-note item-end>12 Oct 2017</ion-note>
+        </ion-item>
+
+        <ion-item (click)="detailTracking()">
+          <ion-avatar item-start>
+            <img src="assets/image/logo-tangsel.png">
+          </ion-avatar>
+          <h2>Cher</h2>
+          <p>Ugh. As if.</p>
+          <ion-note item-end>12 Oct 2017</ion-note>
+        </ion-item>
+
+        <ion-item (click)="detailTracking()">
+          <ion-avatar item-start>
+            <img src="assets/image/logo-tangsel.png">
+          </ion-avatar>
+          <h2>Cher</h2>
+          <p>Ugh. As if.</p>
+          <ion-note item-end>12 Oct 2017</ion-note>
+        </ion-item>
+
+        <ion-item  (click)="detailTracking()">
+          <ion-avatar item-start>
+            <img src="assets/image/logo-tangsel.png">
+          </ion-avatar>
+          <h2>Cher</h2>
+          <p>Ugh. As if.</p>
+          <ion-note item-end>12 Oct 2017</ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'ACCOUNT'">
+      MY ACCOUNT
+    </ion-list>
+
+  </div>
 </ion-content>
