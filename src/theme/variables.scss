@@ -13,6 +13,10 @@
 $text-color: #808080;
 $background-color:  #fff;
 
+$split-pane-side-max-width: 5em!important;
+$split-pane-side-min-width: 5em!important;
+
+
 
 // $split-pane-side-max-width: 100px;
 
@@ -97,5 +101,5 @@ $alert-md-button-border-radius:5px;
 // The premium icon font for Ionic. For more info, please see:
 // http://ionicframework.com/docs/v2/ionicons/
 
-$ionicons-font-path: "../assets/siaphicon";
+$ionicons-font-path: "../assets/fonts";
 @import "ionic.ionicons";

@@ -32,4 +32,8 @@ export class DashboardTrackingPage {
     this.navCtrl.push('DetailTrackingPage');
   }
 
+  public createDisposisi() {
+    this.navCtrl.push('FormDisposisiPage');
+  }
+
 }

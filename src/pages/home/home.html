@@ -12,7 +12,7 @@
 <ion-content padding class="body-content">
   <ion-slides>
       <ion-slide>
-          <div class="foto-div" [ngStyle]="{'background-image': 'url(assets/img/perda.png)'}" (click)="perda()">
+          <div class="foto-div" [ngStyle]="{'background-image': 'url(assets/img/perda.png)'}" tappable [navPush]="'PerdaPage'">
           </div>
       </ion-slide>
       <ion-slide>

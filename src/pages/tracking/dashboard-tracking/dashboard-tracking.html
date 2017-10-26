@@ -173,7 +173,7 @@
           <ion-note item-end>12 Oct 2017</ion-note>
         </ion-item>
 
-        <ion-item  (click)="detailTracking()">
+        <ion-item (click)="detailTracking()">
           <ion-avatar item-start>
             <img src="assets/image/logo-tangsel.png">
           </ion-avatar>
@@ -189,4 +189,16 @@
     </ion-list>
 
   </div>
+
+  <ion-fab bottom right>
+    <button ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+    <ion-fab-list side="top">
+      <button ion-fab color="favorite" (click)="createDisposisi()">
+        <ion-icon name="md-create"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+
 </ion-content>
