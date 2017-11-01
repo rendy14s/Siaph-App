@@ -108,7 +108,7 @@ export class LoginPage {
 
       this.storage.set('siaphCredential', this.dataLogin).then(() => {
         loading.dismiss();
-        this.navCtrl.setRoot('DashboardTrackingPage');
+        this.navCtrl.setRoot('DashboardTrackingPage', { tabSet: 'HOME' });
       });
 
     }, (error) => {

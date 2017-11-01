@@ -15,13 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DashboardTrackingPage {
 
-  public tab: string = "HOME";
+  public tab: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DashboardTrackingPage');
+    this.tab = this.navParams.get('tabSet')
   }
 
   public backHome() {

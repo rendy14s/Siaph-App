@@ -27,7 +27,7 @@ export class TrackingPage {
     this.storage.ready().then(() => {
       this.storage.get('siaphCredential').then((siaphCredential) => {
         if (siaphCredential != null || siaphCredential != undefined) {
-          this.navCtrl.setRoot('DashboardTrackingPage');
+          this.navCtrl.setRoot('DashboardTrackingPage', { tabSet: 'HOME' });
         }
       });
     });

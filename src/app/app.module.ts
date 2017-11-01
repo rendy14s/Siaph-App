@@ -14,6 +14,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { SDKBrowserModule } from '../shared/sdk/index';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Camera } from '@ionic-native/camera';
+
 
 
 
@@ -39,6 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StatusBar,
     SplashScreen,
     FileTransfer,
+    Camera,
     FileOpener,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
