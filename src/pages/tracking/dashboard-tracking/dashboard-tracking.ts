@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { SiaphDocumentsApi } from './../../../shared/sdk/services/custom/SiaphDocuments';
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the DashboardTrackingPage page.
  *
@@ -14,22 +15,54 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'dashboard-tracking.html',
 })
 export class DashboardTrackingPage {
+  public idStorage: any;
+  public storageData: any;
 
   public tab: string;
+  public dataDocument: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public siaphDocumenApi: SiaphDocumentsApi,
+    public storage: Storage,
+  ) {
+    this.storage.ready().then(() => {
+      this.storage.get('siaphCredential').then((siaphCredential) => {
+        this.storageData = siaphCredential;
+        this.idStorage = this.storageData.idUser;
+      });
+    });
   }
 
   ionViewDidLoad() {
     this.tab = this.navParams.get('tabSet')
+
+    // weapons.find({
+    //   order: 'price DESC',
+    //   limit: 3
+    // });
+
+    this.siaphDocumenApi.find({
+      where: {
+        And: [
+          { fromDoc: this.idStorage },
+          { toDoc: this.idStorage },
+        ]
+      }, order: 'createDateDoc DESC',
+    }).subscribe((result) => {
+      console.log(result);
+      this.dataDocument = result;
+    })
   }
 
   public backHome() {
     this.navCtrl.setRoot('HomePage');
   }
 
-  public detailTracking() {
-    this.navCtrl.push('DetailTrackingPage');
+  public detailTracking($event) {
+    const docId = $event;
+    this.navCtrl.push('DetailTrackingPage', { idDoc: docId });
   }
 
   public createDisposisi() {

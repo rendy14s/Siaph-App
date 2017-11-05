@@ -21,9 +21,6 @@ export class TrackingPage {
     public modalCtrl: ModalController,
     public storage: Storage
   ) {
-  }
-
-  ionViewDidLoad() {
     this.storage.ready().then(() => {
       this.storage.get('siaphCredential').then((siaphCredential) => {
         if (siaphCredential != null || siaphCredential != undefined) {
@@ -31,6 +28,10 @@ export class TrackingPage {
         }
       });
     });
+  }
+
+  ionViewDidLoad() {
+    
   }
 
   public modalShow() {
