@@ -14,87 +14,57 @@
 
 
 <ion-content padding>
-  <div class="segment">
-    <b>Welcome {{username}} </b>
-  </div>
 
-  <div class="container-table">
-    <div class="mdl-card mdl-shadow--2dp">
-      <div class="mdl-card__supporting-text">
-        <div class="mdl-stepper-horizontal-alternative">
-          <div class="mdl-stepper-step">
-            <div class="mdl-stepper-circle">
-              <span>1</span>
-            </div>
-            <div class="mdl-stepper-title">Staff PPHD</div>
-            <div class="mdl-stepper-bar-left"></div>
-            <div class="mdl-stepper-bar-right"></div>
-          </div>
-          <div class="mdl-stepper-step">
-            <div class="mdl-stepper-circle">
-              <span>2</span>
-            </div>
-            <div class="mdl-stepper-title">Kepala Sub Bagian PPHD</div>
-            <div class="mdl-stepper-bar-left"></div>
-            <div class="mdl-stepper-bar-right"></div>
-          </div>
-          <div class="mdl-stepper-step">
-            <div class="mdl-stepper-circle">
-              <span>3</span>
-            </div>
-            <div class="mdl-stepper-title">Kepala Sub Bagian Dokumentasi</div>
-            <div class="mdl-stepper-bar-left"></div>
-            <div class="mdl-stepper-bar-right"></div>
-          </div>
-          <div class="mdl-stepper-step">
-            <div class="mdl-stepper-circle">
-              <span>4</span>
-            </div>
-            <div class="mdl-stepper-title">OPD</div>
-            <div class="mdl-stepper-bar-left"></div>
-            <div class="mdl-stepper-bar-right"></div>
-          </div>
-          <div class="mdl-stepper-step">
-            <div class="mdl-stepper-circle">
-              <span>5</span>
-            </div>
-            <div class="mdl-stepper-title">Tim Pembahasan Raperwal</div>
-            <div class="mdl-stepper-bar-left"></div>
-            <div class="mdl-stepper-bar-right"></div>
-          </div>
-          <div class="mdl-stepper-step">
-            <div class="mdl-stepper-circle">
-              <span>6</span>
-            </div>
-            <div class="mdl-stepper-title">Assisten Daerah</div>
-            <div class="mdl-stepper-bar-left"></div>
-            <div class="mdl-stepper-bar-right"></div>
-          </div>
-          <div class="mdl-stepper-step active-step">
-            <div class="mdl-stepper-circle">
-              <span>7</span>
-            </div>
-            <div class="mdl-stepper-title">Sekretaris Daerah</div>
-            <div class="mdl-stepper-bar-left"></div>
-            <div class="mdl-stepper-bar-right"></div>
-          </div>
+  <ion-row responsive>
+    <ion-col col-12>
+      <ion-slides [slidesPerView]="3" #mySlider>
+        <div class="mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__supporting-text">
+            <div class="mdl-stepper-horizontal-alternative">
 
+              <ion-slide>
+                <div class="mdl-stepper-step active-step">
+                  <div class="mdl-stepper-circle">
+                    <span>
+                      <ion-icon name="information"></ion-icon>
+                    </span>
+                  </div>
+                  <div class="mdl-stepper-title">{{dataTemp.RoleFrom}}</div>
+                  <!-- <div class="mdl-stepper-bar-left"></div> -->
+                  <div class="mdl-stepper-bar-right"></div>
+                </div>
+              </ion-slide>
+
+              <ion-slide *ngFor="let datas of dynamicData">
+                <div class="mdl-stepper-step active-step">
+                  <div class="mdl-stepper-circle">
+                    <span>
+                      <ion-icon name="information"></ion-icon>
+                    </span>
+                  </div>
+                  <div class="mdl-stepper-title">{{datas}}</div>
+                  <div class="mdl-stepper-bar-left"></div>
+                  <div class="mdl-stepper-bar-right"></div>
+                </div>
+              </ion-slide>
+
+              <ion-slide>
+                <div class="mdl-stepper-step">
+                  <div class="mdl-stepper-circle">
+                    <span>
+                      <ion-icon name="help"></ion-icon>
+                    </span>
+                  </div>
+                  <div class="mdl-stepper-title">Waiting Approval</div>
+                  <div class="mdl-stepper-bar-left"></div>
+                  <!-- <div class="mdl-stepper-bar-right"></div> -->
+                </div>
+              </ion-slide>
+
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- <ion-list>
-
-    <ion-item>
-      <p class="example">No Surat</p>
-      <h2 class="tester">XXXX/XXXXX/XXXXX</h2>
-    </ion-item>
-
-    <ion-item text-wrap>
-      <p class="example">Judul Surat</p>
-      <h2 class="tester">Loresum Isum Loresum Isum Loresum Isum Loresum Isum Loresum Isum Loresum Isum</h2>
-    </ion-item>
-
-  </ion-list> -->
+      </ion-slides>
+    </ion-col>
+  </ion-row>
 </ion-content>

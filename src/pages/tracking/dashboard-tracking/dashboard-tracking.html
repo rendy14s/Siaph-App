@@ -128,58 +128,13 @@
 
     <ion-list *ngSwitchCase="'TRACKING'">
       <ion-list>
-        <ion-item [navPush]="DetailTrackingPage">
+        <ion-item (click)="detailTracking(datas.idDoc)" *ngFor="let datas of dataDocument">
           <ion-avatar item-start>
             <img src="assets/image/logo-tangsel.png">
           </ion-avatar>
-          <h2>Cher</h2>
-          <p>Ugh. As if.</p>
-          <ion-note item-end>12 Oct 2017</ion-note>
-        </ion-item>
-
-        <ion-item (click)="detailTracking()">
-          <ion-avatar item-start>
-            <img src="assets/image/logo-tangsel.png">
-          </ion-avatar>
-          <h2>Cher</h2>
-          <p>Ugh. As if.</p>
-          <ion-note item-end>12 Oct 2017</ion-note>
-        </ion-item>
-
-        <ion-item (click)="detailTracking()">
-          <ion-avatar item-start>
-            <img src="assets/image/logo-tangsel.png">
-          </ion-avatar>
-          <h2>Cher</h2>
-          <p>Ugh. As if.</p>
-          <ion-note item-end>12 Oct 2017</ion-note>
-        </ion-item>
-
-        <ion-item (click)="detailTracking()">
-          <ion-avatar item-start>
-            <img src="assets/image/logo-tangsel.png">
-          </ion-avatar>
-          <h2>Cher</h2>
-          <p>Ugh. As if.</p>
-          <ion-note item-end>12 Oct 2017</ion-note>
-        </ion-item>
-
-        <ion-item (click)="detailTracking()">
-          <ion-avatar item-start>
-            <img src="assets/image/logo-tangsel.png">
-          </ion-avatar>
-          <h2>Cher</h2>
-          <p>Ugh. As if.</p>
-          <ion-note item-end>12 Oct 2017</ion-note>
-        </ion-item>
-
-        <ion-item (click)="detailTracking()">
-          <ion-avatar item-start>
-            <img src="assets/image/logo-tangsel.png">
-          </ion-avatar>
-          <h2>Cher</h2>
-          <p>Ugh. As if.</p>
-          <ion-note item-end>12 Oct 2017</ion-note>
+          <h2>{{datas.subjectDoc}}</h2>
+          <p>{{datas.noAgendaDoc}}</p>
+          <ion-note item-end>{{datas.createDateDoc | date:'short' }}</ion-note>
         </ion-item>
       </ion-list>
     </ion-list>
