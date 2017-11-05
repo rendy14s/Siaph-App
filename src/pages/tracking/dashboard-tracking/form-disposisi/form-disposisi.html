@@ -20,57 +20,51 @@
     <img *ngIf="photo !== ''" [ngStyle]="{'background-image': 'url(' + photo + ')'}" class="foto-div">
   </div>
 
-  <ion-list>
+  <form [formGroup]="disposisiForm">
+    <ion-list>
 
-    <ion-item>
-      <ion-label stacked>Letter From</ion-label>
-      <ion-select [(ngModel)]="selectfrom">
-        <ion-option value="{{datax.idRole}}" *ngFor="let datax of dataDepthRole">{{datax.nameRole}}</ion-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Letter To</ion-label>
+        <ion-select formControlName="selectto">
+          <ion-option *ngFor="let i of dataDepthRole" value="{{i.idRole}}">{{i.nameRole}}</ion-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Letter To</ion-label>
-      <ion-select [(ngModel)]="selectto">
-        <ion-option value="{{datas.idRole}}" *ngFor="let datas of dataDepthRole">{{datas.nameRole}}</ion-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Letter Number</ion-label>
+        <ion-textarea rows="2" formControlName="nodoc" placeholder="XXXXXXX-XXXXXX-2017"></ion-textarea>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Letter Number</ion-label>
-      <ion-textarea rows="2" [(ngModel)]="nodoc" placeholder="XXXXXXX-XXXXXX-2017"></ion-textarea>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Date of the Letter</ion-label>
+        <ion-datetime displayFormat="DD MMM YYYY" formControlName="receiptDate"></ion-datetime>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Date of the Letter</ion-label>
-      <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="receiptDate"></ion-datetime>
-    </ion-item>
+      <ion-item>
+        <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Agenda Number</ion-label>
+        <ion-textarea rows="2" formControlName="noAgenda" placeholder="XXXXXXX-XXXXXX-2017"></ion-textarea>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Agenda Number</ion-label>
-      <ion-textarea rows="2" [(ngModel)]="noAgenda" placeholder="XXXXXXX-XXXXXX-2017"></ion-textarea>
-    </ion-item>
+      <ion-item>
+        <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Subject</ion-label>
+        <ion-textarea rows="4" formControlName="subject" placeholder="Enter Here"></ion-textarea>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Subject</ion-label>
-      <ion-textarea rows="4" [(ngModel)]="subject" placeholder="Enter Here"></ion-textarea>
-    </ion-item>
+      <ion-item>
+        <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Noted</ion-label>
+        <ion-textarea rows="4" formControlName="noted" placeholder="Enter Here" required></ion-textarea>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Noted</ion-label>
-      <ion-textarea rows="4" [(ngModel)]="noted" placeholder="Enter Here" required></ion-textarea>
-    </ion-item>
-
-  </ion-list>
+    </ion-list>
+  </form>
 
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <div class="btn-footer-action-page">
+    <div class="btn-footer-action-page full-btn">
       <ul align="center">
-        <li tappable (click)="reset()">Reset</li>
-        <li tappable (click)="submit()">Submit</li>
+        <button class="btn-tag btn-footer-action-page" color="primary" ion-button full [disabled]="!disposisiForm.valid" (click)="submit($event);">Submit</button>
       </ul>
     </div>
   </ion-toolbar>

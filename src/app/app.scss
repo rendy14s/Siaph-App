@@ -221,7 +221,7 @@ width: 25%;
 /* Begin actual mdl-stepper css styles */
 
 .mdl-stepper-horizontal-alternative {
-display: table;
+display: flex;
 width: 100%;
 margin: 0 auto;
 }
@@ -257,7 +257,7 @@ padding: 0 5px;
 
 .mdl-stepper-horizontal-alternative .mdl-stepper-step:first-child .mdl-stepper-bar-left,
 .mdl-stepper-horizontal-alternative .mdl-stepper-step:last-child .mdl-stepper-bar-right {
-display: none;
+// display: none;
 }
 
 .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-circle {
