@@ -55,4 +55,20 @@ page-detail-tracking {
         width: 100%;
         margin: 0 auto;
     }
+
+    .btn-footer-action-page {
+        ul {
+            li {
+                min-width: 6em;
+            }
+        }
+    }
+
+    .label-bottom {
+        align-content: center;
+        margin-top:2%;
+        font-family: 'Arial';
+        font-weight: bold;
+        font-size: medium;
+    }
 }
