@@ -88,8 +88,8 @@ export class FormDisposisiPage {
           this.siaphDepthroleApi.find().subscribe((result) => {
             this.dataDepthRole = result;
             console.log(this.dataDepthRole, 'Data Role');
-          })
-        })
+          });
+        });
       });
     });
   }
