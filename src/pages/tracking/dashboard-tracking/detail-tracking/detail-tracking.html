@@ -103,21 +103,34 @@
       <ion-col col-6 class="label-bottom">
         Status Disposisi
       </ion-col>
-      <ion-col col-2 class="label-bottom">
+      <ion-col col-1 class="label-bottom">
         :
       </ion-col>
-      <ion-col col-4>
+      <ion-col col-5>
         <ion-chip color="primary">
           <ion-label>{{statusDisposisi}} Disposisi</ion-label>
         </ion-chip>
       </ion-col>
     </ion-row>
 
+    <form [formGroup]="disposisiForm">
+      <ion-row>
+        <ion-col col-12 class="label-bottom">
+          <ion-item>
+            <ion-label floating>Letter To</ion-label>
+            <ion-select formControlName="selectto">
+              <ion-option *ngFor="let i of dataDepthRole" value="{{i.idRole}}">{{i.nameRole}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </form>
+
     <ion-row>
       <ion-col col-12>
         <ion-item>
           <ion-label floating style="margin-bottom: 20px !important;font-size: 13px; font-family: 'Arial'; font-weight: bold; font-size">Noted</ion-label>
-          <ion-textarea rows="4" [(ngModel)]="noted" placeholder="Enter Here" ></ion-textarea>
+          <ion-textarea rows="4" [(ngModel)]="noted" placeholder="Enter Here"></ion-textarea>
         </ion-item>
       </ion-col>
     </ion-row>

@@ -4,6 +4,8 @@ import { SiaphTrackingdocumentsApi } from './../../../../shared/sdk/services/cus
 import { Storage } from '@ionic/storage';
 import { SiaphDepthroleApi } from './../../../../shared/sdk/services/custom/SiaphDepthrole';
 import { SiaphDocumentsApi } from './../../../../shared/sdk/services/custom/SiaphDocuments';
+import moment from 'moment';
+import { FormBuilder, Validators } from '@angular/forms';
 /**
  * Generated class for the DetailTrackingPage page.
  *
@@ -35,7 +37,16 @@ export class DetailTrackingPage {
   public docSubject: any;
   public agendaNo: any;
 
+  public CurrentDate: any;
+  public userName: any;
+  public storageData: any;
+  public idStorage: any;
+
   public statusDisposisi: any;
+
+  public dataDepthRole: any;
+  public selectto: any;
+  public disposisiForm: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -44,12 +55,38 @@ export class DetailTrackingPage {
     public siaphDepthroleApi: SiaphDepthroleApi,
     public siaphDocumentsApi: SiaphDocumentsApi,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public fb: FormBuilder,
   ) {
 
     setTimeout(() => {
       this.goToSlide();
     }, 500);
+
+    this.storage.ready().then(() => {
+      this.storage.get('siaphCredential').then((siaphCredential) => {
+        this.storageData = siaphCredential;
+        console.log(this.storageData, 'Storage');
+        this.userName = this.storageData.username;
+        this.idStorage = this.storageData.idUser;
+
+        this.siaphDepthroleApi.find().subscribe((result) => {
+          this.dataDepthRole = result;
+          console.log(this.dataDepthRole, 'Data Role');
+          // this.selectto = this.dataDepthRole[6].nameRole;
+        });
+      });
+    });
+
+    this.disposisiForm = this.fb.group({
+      'selectto': ['TIM PEMBAHASAN RAPERWAL', Validators.compose([Validators.required])],
+      // 'nodoc': ['', Validators.compose([Validators.required])],
+      // 'receiptDate': [this.receiptDate, Validators.compose([Validators.required])],
+      // 'noAgenda': ['', Validators.compose([Validators.required])],
+      // 'subject': ['', Validators.compose([Validators.required])],
+      // 'noted': ['', Validators.compose([Validators.required])],
+    });
+
   }
 
   goToSlide() {
@@ -125,6 +162,27 @@ export class DetailTrackingPage {
 
   public approved() {
     console.log('Approve');
+
+    const dataApproved = {
+      idDoc: this.dataTracking.idDoc,
+      fromDoc: this.idStorage,
+      toDoc: this.disposisiForm.controls.selectto.value,
+      statusDisposisi: 'Open',
+      prosesDate: this.formatDate(),
+      editedDate: this.formatDate(),
+      editedBy: this.userName
+    };
+
+    this.siaphTrackingdocumentsApi.create(dataApproved).subscribe((result) => {
+      console.log(result);
+    }, (error) => {
+      console.log(error, 'Error Approved');
+    });
+  }
+
+  public formatDate() {
+    this.CurrentDate = moment().format();
+    return this.CurrentDate;
   }
 
   public cancel() {
