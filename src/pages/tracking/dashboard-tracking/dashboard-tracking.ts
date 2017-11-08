@@ -27,33 +27,32 @@ export class DashboardTrackingPage {
     public siaphDocumenApi: SiaphDocumentsApi,
     public storage: Storage,
   ) {
-    this.storage.ready().then(() => {
-      this.storage.get('siaphCredential').then((siaphCredential) => {
-        this.storageData = siaphCredential;
-        this.idStorage = this.storageData.idUser;
-      });
-    });
+
   }
 
   ionViewDidLoad() {
     this.tab = this.navParams.get('tabSet')
 
-    // weapons.find({
-    //   order: 'price DESC',
-    //   limit: 3
-    // });
+    this.storage.ready().then(() => {
+      this.storage.get('siaphCredential').then((siaphCredential) => {
+        this.storageData = siaphCredential;
+        this.idStorage = this.storageData.idUser;
 
-    this.siaphDocumenApi.find({
-      where: {
-        And: [
-          { fromDoc: this.idStorage },
-          { toDoc: this.idStorage },
-        ]
-      }, order: 'createDateDoc DESC',
-    }).subscribe((result) => {
-      console.log(result);
-      this.dataDocument = result;
-    })
+        console.log(this.idStorage, 'ID LOGIN');
+        this.siaphDocumenApi.find({
+          where: {
+            And: [
+              { fromDoc: this.idStorage },
+              { toDoc: this.idStorage },
+            ]
+          }, order: 'createDateDoc DESC',
+        }).subscribe((result) => {
+          console.log(result);
+          this.dataDocument = result;
+        })
+
+      });
+    });
   }
 
   public backHome() {
