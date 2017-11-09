@@ -44,6 +44,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CookieBrowser } from './storage/cookie.browser';
 import { StorageBrowser } from './storage/storage.browser';
+import { SocketBrowser } from './sockets/socket.browser';
+import { SocketDriver } from './sockets/socket.driver';
+import { SocketConnection } from './sockets/socket.connections';
+import { RealTime } from './services/core/real.time';
+import { UserApi } from './services/custom/User';
 import { AclApi } from './services/custom/Acl';
 import { AccesstokenApi } from './services/custom/Accesstoken';
 import { RolemappingApi } from './services/custom/Rolemapping';
@@ -67,7 +72,8 @@ import { SiaphUsercredentialApi } from './services/custom/SiaphUsercredential';
   declarations: [ ],
   exports:      [ ],
   providers:    [
-    ErrorHandler
+    ErrorHandler,
+    SocketConnection
   ]
 })
 export class SDKBrowserModule {
@@ -82,6 +88,8 @@ export class SDKBrowserModule {
         LoggerService,
         JSONSearchParams,
         SDKModels,
+        RealTime,
+        UserApi,
         AclApi,
         AccesstokenApi,
         RolemappingApi,
@@ -92,7 +100,8 @@ export class SDKBrowserModule {
         SiaphTrackingdocumentsApi,
         SiaphUsercredentialApi,
         internalStorageProvider,
-        { provide: SDKStorage, useClass: StorageBrowser }
+        { provide: SDKStorage, useClass: StorageBrowser },
+        { provide: SocketDriver, useClass: SocketBrowser }
       ]
     };
   }

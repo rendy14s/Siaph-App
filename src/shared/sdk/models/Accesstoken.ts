@@ -45,6 +45,7 @@ export class Accesstoken implements AccesstokenInterface {
     return {
       name: 'Accesstoken',
       plural: 'Accesstokens',
+      path: 'Accesstokens',
       properties: {
         "id": {
           name: 'id',

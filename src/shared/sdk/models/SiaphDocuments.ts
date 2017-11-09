@@ -4,11 +4,10 @@ declare var Object: any;
 export interface SiaphDocumentsInterface {
   "noDoc": string;
   "fromDoc": string;
+  "toDoc": string;
   "dateDoc": Date;
-  "acceptDateDoc": Date;
   "noAgendaDoc": string;
   "subjectDoc": string;
-  "notesDoc": string;
   "createDateDoc": Date;
   "publishedByDoc": string;
   "idDoc"?: number;
@@ -17,11 +16,10 @@ export interface SiaphDocumentsInterface {
 export class SiaphDocuments implements SiaphDocumentsInterface {
   "noDoc": string;
   "fromDoc": string;
+  "toDoc": string;
   "dateDoc": Date;
-  "acceptDateDoc": Date;
   "noAgendaDoc": string;
   "subjectDoc": string;
-  "notesDoc": string;
   "createDateDoc": Date;
   "publishedByDoc": string;
   "idDoc": number;
@@ -55,6 +53,7 @@ export class SiaphDocuments implements SiaphDocumentsInterface {
     return {
       name: 'SiaphDocuments',
       plural: 'SiaphDocuments',
+      path: 'SiaphDocuments',
       properties: {
         "noDoc": {
           name: 'noDoc',
@@ -64,12 +63,12 @@ export class SiaphDocuments implements SiaphDocumentsInterface {
           name: 'fromDoc',
           type: 'string'
         },
+        "toDoc": {
+          name: 'toDoc',
+          type: 'string'
+        },
         "dateDoc": {
           name: 'dateDoc',
-          type: 'Date'
-        },
-        "acceptDateDoc": {
-          name: 'acceptDateDoc',
           type: 'Date'
         },
         "noAgendaDoc": {
@@ -78,10 +77,6 @@ export class SiaphDocuments implements SiaphDocumentsInterface {
         },
         "subjectDoc": {
           name: 'subjectDoc',
-          type: 'string'
-        },
-        "notesDoc": {
-          name: 'notesDoc',
           type: 'string'
         },
         "createDateDoc": {

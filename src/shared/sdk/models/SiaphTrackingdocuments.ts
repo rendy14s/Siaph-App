@@ -6,10 +6,13 @@ export interface SiaphTrackingdocumentsInterface {
   "prosesDate": Date;
   "editedDate": Date;
   "editedBy": string;
-  "positionDisposisi": string;
-  "statusDoc": string;
-  "latelyDoc": string;
+  "positionDisposisi"?: string;
+  "statusDoc"?: string;
+  "latelyDoc"?: string;
   "idTracking"?: number;
+  "idDoc"?: number;
+  "fromDoc"?: number;
+  "toDoc"?: number;
 }
 
 export class SiaphTrackingdocuments implements SiaphTrackingdocumentsInterface {
@@ -21,6 +24,9 @@ export class SiaphTrackingdocuments implements SiaphTrackingdocumentsInterface {
   "statusDoc": string;
   "latelyDoc": string;
   "idTracking": number;
+  "idDoc": number;
+  "fromDoc": number;
+  "toDoc": number;
   constructor(data?: SiaphTrackingdocumentsInterface) {
     Object.assign(this, data);
   }
@@ -51,6 +57,7 @@ export class SiaphTrackingdocuments implements SiaphTrackingdocumentsInterface {
     return {
       name: 'SiaphTrackingdocuments',
       plural: 'SiaphTrackingdocuments',
+      path: 'SiaphTrackingdocuments',
       properties: {
         "statusDisposisi": {
           name: 'statusDisposisi',
@@ -82,6 +89,18 @@ export class SiaphTrackingdocuments implements SiaphTrackingdocumentsInterface {
         },
         "idTracking": {
           name: 'idTracking',
+          type: 'number'
+        },
+        "idDoc": {
+          name: 'idDoc',
+          type: 'number'
+        },
+        "fromDoc": {
+          name: 'fromDoc',
+          type: 'number'
+        },
+        "toDoc": {
+          name: 'toDoc',
           type: 'number'
         },
       },

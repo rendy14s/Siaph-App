@@ -5,6 +5,7 @@ export interface SiaphNoteddocumentsInterface {
   "idTracking": number;
   "idDoc": number;
   "dateNoted": Date;
+  "notesDoc": string;
   "idNoted"?: number;
 }
 
@@ -12,6 +13,7 @@ export class SiaphNoteddocuments implements SiaphNoteddocumentsInterface {
   "idTracking": number;
   "idDoc": number;
   "dateNoted": Date;
+  "notesDoc": string;
   "idNoted": number;
   constructor(data?: SiaphNoteddocumentsInterface) {
     Object.assign(this, data);
@@ -43,6 +45,7 @@ export class SiaphNoteddocuments implements SiaphNoteddocumentsInterface {
     return {
       name: 'SiaphNoteddocuments',
       plural: 'SiaphNoteddocuments',
+      path: 'SiaphNoteddocuments',
       properties: {
         "idTracking": {
           name: 'idTracking',
@@ -55,6 +58,10 @@ export class SiaphNoteddocuments implements SiaphNoteddocumentsInterface {
         "dateNoted": {
           name: 'dateNoted',
           type: 'Date'
+        },
+        "notesDoc": {
+          name: 'notesDoc',
+          type: 'string'
         },
         "idNoted": {
           name: 'idNoted',

@@ -45,6 +45,7 @@ export class SiaphUsercredential implements SiaphUsercredentialInterface {
     return {
       name: 'SiaphUsercredential',
       plural: 'SiaphUsercredentials',
+      path: 'SiaphUsercredentials',
       properties: {
         "username": {
           name: 'username',

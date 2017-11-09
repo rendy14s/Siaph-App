@@ -41,6 +41,7 @@ export class SiaphDocumentslibrary implements SiaphDocumentslibraryInterface {
     return {
       name: 'SiaphDocumentslibrary',
       plural: 'SiaphDocumentslibraries',
+      path: 'SiaphDocumentslibraries',
       properties: {
         "idDoc": {
           name: 'idDoc',

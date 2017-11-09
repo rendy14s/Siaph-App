@@ -43,6 +43,7 @@ export class Rolemapping implements RolemappingInterface {
     return {
       name: 'Rolemapping',
       plural: 'Rolemappings',
+      path: 'Rolemappings',
       properties: {
         "id": {
           name: 'id',
