@@ -127,8 +127,8 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'TRACKING'">
-      <ion-list>
-        <ion-item (click)="detailTracking(datas.idDoc)" *ngFor="let datas of dataDocument">
+      <ion-list [hidden]="isView">
+        <ion-item (click)="detailTracking(datas.idDoc)" *ngFor="let datas of dataDocument.getDataDocument">
           <ion-avatar item-start>
             <img src="assets/image/logo-tangsel.png">
           </ion-avatar>
@@ -137,6 +137,8 @@
           <ion-note item-end>{{datas.createDateDoc | date:'short' }}</ion-note>
         </ion-item>
       </ion-list>
+
+      <div [hidden]="notView"><p text-center>No Record</p></div>
     </ion-list>
 
     <ion-list *ngSwitchCase="'ACCOUNT'">
