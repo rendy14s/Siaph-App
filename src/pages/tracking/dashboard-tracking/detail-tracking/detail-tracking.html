@@ -49,7 +49,33 @@
                 </div>
               </ion-slide>
 
-              <ion-slide>
+              <!-- <ion-slide *ngIf="dynamicData.length == 2">
+                <div class="mdl-stepper-step active-step">
+                  <div class="mdl-stepper-circle">
+                    <span>
+                      <ion-icon name="information"></ion-icon>
+                    </span>
+                  </div>
+                  <div class="mdl-stepper-title">{{status}} BY {{nameApproved}}</div>
+                  <div class="mdl-stepper-bar-left"></div>
+                  <div class="mdl-stepper-bar-right"></div>
+                </div>
+              </ion-slide> -->
+
+              <ion-slide [hidden]="shiwFinish">
+                <div class="mdl-stepper-step">
+                  <div class="mdl-stepper-circle">
+                    <span>
+                      <ion-icon name="help"></ion-icon>
+                    </span>
+                  </div>
+                  <div class="mdl-stepper-title">Fully Approved</div>
+                  <div class="mdl-stepper-bar-left"></div>
+                  <!-- <div class="mdl-stepper-bar-right"></div> -->
+                </div>
+              </ion-slide>
+
+              <ion-slide [hidden]="showFinish">
                 <div class="mdl-stepper-step">
                   <div class="mdl-stepper-circle">
                     <span>
@@ -106,30 +132,35 @@
       <ion-col col-1 class="label-bottom">
         :
       </ion-col>
-      <ion-col col-5>
-        <ion-chip color="primary">
+
+      <ion-col col-5 *ngIf="showFinish == true">
+        <ion-chip color="danger">
           <ion-label>{{statusDisposisi}} Disposisi</ion-label>
         </ion-chip>
       </ion-col>
+
+      <ion-col col-5 *ngIf="showFinish == false">
+          <ion-chip color="primary">
+            <ion-label>{{statusDisposisi}} Disposisi</ion-label>
+          </ion-chip>
+        </ion-col>
     </ion-row>
 
-    <form [formGroup]="disposisiForm">
-      <ion-row>
-        <ion-col col-12 class="label-bottom">
-          <ion-item>
-            <ion-label floating>Letter To</ion-label>
-            <ion-select formControlName="selectto">
-              <ion-option *ngFor="let i of dataDepthRole" value="{{i.idRole}}">{{i.nameRole}}</ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </form>
+    <ion-row>
+      <ion-col col-12 class="label-bottom">
+        <ion-item>
+          <ion-label floating>Letter To</ion-label>
+          <ion-select [(ngModel)]="selectto">
+            <ion-option *ngFor="let i of dataDepthRole" value="{{i.idRole}}">{{i.nameRole}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
     <ion-row>
       <ion-col col-12>
         <ion-item>
-          <ion-label floating style="margin-bottom: 20px !important;font-size: 13px; font-family: 'Arial'; font-weight: bold; font-size">Noted</ion-label>
+          <ion-label floating style="margin-bottom: 20px !important;font-size: 13px; font-family: 'Arial'; font-weight: bold;">Noted</ion-label>
           <ion-textarea rows="4" [(ngModel)]="noted" placeholder="Enter Here"></ion-textarea>
         </ion-item>
       </ion-col>
@@ -138,12 +169,18 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar [hidden]="showFinish">
     <div class="btn-footer-action-page">
       <ul align="center">
-        <li tappable (click)="approved()">Approved</li>
-        <li tappable (click)="cancel()">cancel</li>
+        <li tappable (click)="approved()" [hidden]="showFinish">Approved</li>
+        <li tappable (click)="cancel()">Cancel</li>
       </ul>
+    </div>
+  </ion-toolbar>
+
+  <ion-toolbar [hidden]="shiwFinish">
+    <div class="btn-footer-action-page">
+      <p align="center" style="color: red">*This form has been fully approved*</p>
     </div>
   </ion-toolbar>
 </ion-footer>
