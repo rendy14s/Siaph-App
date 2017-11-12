@@ -20,7 +20,10 @@ export class DashboardTrackingPage {
 
   public tab: string;
   public dataDocument: any;
+  public dataDocumentLength: number;
 
+  public isView: boolean;
+  public notView: boolean;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -39,18 +42,23 @@ export class DashboardTrackingPage {
         this.idStorage = this.storageData.idUser;
 
         console.log(this.idStorage, 'ID LOGIN');
-        this.siaphDocumenApi.find({
-          where: {
-            And: [
-              { fromDoc: this.idStorage },
-              { toDoc: this.idStorage },
-            ]
-          }, order: 'createDateDoc DESC',
-        }).subscribe((result) => {
-          console.log(result);
-          this.dataDocument = result;
-        })
-
+        const data = {
+          fromDoc: this.idStorage,
+          toDoc: this.idStorage
+        };
+        this.siaphDocumenApi.getDataDocument(data).subscribe((result) => {
+            console.log(result);
+            this.dataDocument = result;
+            this.dataDocumentLength = this.dataDocument.getDataDocument.length
+            console.log(this.dataDocumentLength, 'Length Doc');
+            if(this.dataDocumentLength == 0) {
+              this.isView = true;
+              this.notView = false;
+            } else {
+              this.isView = false;
+              this.notView = true;
+            }
+          })
       });
     });
   }
