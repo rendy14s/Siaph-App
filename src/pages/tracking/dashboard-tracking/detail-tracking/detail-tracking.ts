@@ -19,9 +19,9 @@ import moment from 'moment';
   templateUrl: 'detail-tracking.html',
 })
 export class DetailTrackingPage {
-  
 
   @ViewChild('mySlider') mySlider: any;
+  public DOCUMENTS: string = "DOC";
 
   public idDoc: any;
   public dataTracking: any;
@@ -53,6 +53,11 @@ export class DetailTrackingPage {
   public showFinish: boolean;
   public datax;
   public noted: any;
+  public notes: {}[];
+  public peopleNote: {}[];
+  public listNotesShow: boolean;
+  public listNotesView: boolean;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -65,9 +70,13 @@ export class DetailTrackingPage {
     public toastCtrl: ToastController,
     public siaphNoteddocumentsApi: SiaphNoteddocumentsApi
   ) {
+
+  }
+
+  ionViewDidEnter() {
     setTimeout(() => {
       this.goToSlide();
-    }, 500);
+    }, 1000);
   }
 
   goToSlide() {
@@ -83,6 +92,7 @@ export class DetailTrackingPage {
     loadPub.present();
 
     this.getDataDocuments();
+    this.loadNoted();
 
     this.storage.ready().then(() => {
       this.storage.get('siaphCredential').then((siaphCredential) => {
@@ -116,7 +126,7 @@ export class DetailTrackingPage {
             result2['RoleFrom'] = result2[0]['nameRole'];
             this.dataTemp = result2;
 
-            if(this.statusDisposisi == 'Closed') {
+            if (this.statusDisposisi == 'Closed') {
               this.showFinish = true;
               this.shiwFinish = false;
             } else if (this.statusDisposisi == 'Open') {
@@ -201,9 +211,10 @@ export class DetailTrackingPage {
                   idTracking: this.datax.idTracking,
                   idDoc: this.datax.idDoc,
                   dateNoted: this.formatDate(),
+                  fromNote: this.idStorage,
                   notesDoc: this.noted
                 };
-                if(this.noted == null || this.noted == undefined) {
+                if (this.noted == null || this.noted == undefined) {
                   let toast = this.toastCtrl.create({
                     message: 'Success Disposisi!',
                     duration: 3000,
@@ -250,10 +261,11 @@ export class DetailTrackingPage {
           idTracking: this.datax.idTracking,
           idDoc: this.datax.idDoc,
           dateNoted: this.formatDate(),
+          fromNote: this.idStorage,
           notesDoc: this.noted
         };
-        
-        if(this.noted == null || this.noted == undefined) {
+
+        if (this.noted == null || this.noted == undefined) {
           let toast = this.toastCtrl.create({
             message: 'Success Disposisi!',
             duration: 3000,
@@ -272,12 +284,45 @@ export class DetailTrackingPage {
             this.navCtrl.setRoot('DashboardTrackingPage');
           })
         }
-       
+
       }, (error) => {
         console.log(error, 'Error Approved');
       });
 
     }
+  }
+
+  public loadNoted() {
+    this.siaphNoteddocumentsApi.find({
+      where: {
+        idDoc: this.idDoc
+      }
+    }).subscribe((result) => {
+      // console.log(result, 'Komentar Doc');
+      this.notes = result;
+
+      for (let a = 0; a < this.notes.length; a++) {
+        this.siaphDepthroleApi.find({
+          where: {
+            idRole: this.idStorage
+          }
+        }).subscribe((result) => {
+          this.peopleNote = result;
+          console.log(this.peopleNote, 'People');
+
+          this.notes[a]['peopleNotes'] = this.peopleNote[a]['nameRole'];
+        });
+      }
+      console.log(this.notes, 'Komentar Doc');
+      if (this.notes.length == 0) {
+        this.listNotesView = true;
+        this.listNotesShow = false;
+      } else {
+        this.listNotesView = false;
+        this.listNotesShow = true;
+      }
+
+    });
   }
 
   public formatDate() {
