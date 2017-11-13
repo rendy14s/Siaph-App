@@ -128,7 +128,7 @@ page-dashboard-tracking {
            margin-left: 2.5em !important;
        }
        .col-grid {
-           margin-bottom: -20%;        
+           margin-bottom: -15%;        
            border-right: 1px solid #EEEEEE;
        }
        .my-overlay {
@@ -234,5 +234,24 @@ page-dashboard-tracking {
         line-height: 3rem;
         color: #189dae;
         background-color: transparent;
+    }
+
+    #bg{
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position-y: 40%;
+    }
+
+    .foto-div{
+        width: 8em;
+        height: 8em;
+        border-radius: 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 0 auto;
+        background-position-y: 0;
+        margin-top: 2em;
+        border: 3px solid #FFF; 
     }
 }

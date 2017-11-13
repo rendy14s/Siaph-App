@@ -10,7 +10,6 @@
     <button ion-button icon-only (click)="backHome()">
       <ion-icon class="sficon-component"></ion-icon>
     </button>
-    <!-- <ion-icon name="md-desktop"></ion-icon> -->
     <ion-title>Dashboard</ion-title>
   </ion-navbar>
 
@@ -28,7 +27,7 @@
       </div>
     </ion-segment-button>
 
-    <ion-segment-button value="MACCOUNT">
+    <ion-segment-button value="MACCOUNT" [hidden]="shiwMenu">
       <div>
         <div class="col-grid">
           <span class="sficon-people btn-head-home"></span>
@@ -82,11 +81,6 @@
               <div>Detail</div>
             </button>
           </ion-col>
-          <!-- <ion-col text-center>
-              <ion-note>
-                12 Oct 2017
-              </ion-note>
-            </ion-col> -->
         </ion-row>
       </ion-card>
 
@@ -113,16 +107,22 @@
               <div>Detail</div>
             </button>
           </ion-col>
-          <!-- <ion-col text-center>
-              <ion-note>
-                12 Oct 2017
-              </ion-note>
-            </ion-col> -->
         </ion-row>
       </ion-card>
+
+      <ion-fab bottom right>
+        <button ion-fab mini>
+          <ion-icon name="add"></ion-icon>
+        </button>
+        <ion-fab-list side="top">
+          <button ion-fab color="favorite" (click)="createDisposisi()">
+            <ion-icon name="md-create"></ion-icon>
+          </button>
+        </ion-fab-list>
+      </ion-fab>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'MACCOUNT'">
+    <ion-list *ngSwitchCase="'MACCOUNT'" [hidden]="shiwMenu">
       MANAGE ACCOUNT
     </ion-list>
 
@@ -138,24 +138,40 @@
         </ion-item>
       </ion-list>
 
-      <div [hidden]="notView"><p text-center>No Record</p></div>
+      <div [hidden]="notView">
+        <p text-center>No Record</p>
+      </div>
+
+      <ion-fab bottom right>
+        <button ion-fab mini>
+          <ion-icon name="add"></ion-icon>
+        </button>
+        <ion-fab-list side="top">
+          <button ion-fab color="favorite" (click)="createDisposisi()">
+            <ion-icon name="md-create"></ion-icon>
+          </button>
+        </ion-fab-list>
+      </ion-fab>
     </ion-list>
 
     <ion-list *ngSwitchCase="'ACCOUNT'">
-      MY ACCOUNT
+
+      <ion-thumbnail id="bg">
+        <div class="foto-div" [ngStyle]="{'background-image': 'url(' + photo + ')'}" menuClose></div>
+
+        <h2 text-center>{{nameUser}}</h2>
+        <p text-center>{{publicRot}}</p>
+      </ion-thumbnail>
+
+      <ion-footer>
+        <ion-toolbar>
+          <button ion-button full round (click)="changePass()">Change Password</button>
+          <button ion-button full round (click)="logout()">Logout</button>
+        </ion-toolbar>
+      </ion-footer>
+
     </ion-list>
 
   </div>
-
-  <ion-fab bottom right>
-    <button ion-fab mini>
-      <ion-icon name="add"></ion-icon>
-    </button>
-    <ion-fab-list side="top">
-      <button ion-fab color="favorite" (click)="createDisposisi()">
-        <ion-icon name="md-create"></ion-icon>
-      </button>
-    </ion-fab-list>
-  </ion-fab>
 
 </ion-content>
