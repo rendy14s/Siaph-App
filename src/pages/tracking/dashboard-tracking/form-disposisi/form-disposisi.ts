@@ -4,6 +4,7 @@ import { SiaphDocumentsApi } from './../../../../shared/sdk/services/custom/Siap
 import { SiaphTrackingdocumentsApi } from './../../../../shared/sdk/services/custom/SiaphTrackingdocuments';
 import { SiaphDepthroleApi } from './../../../../shared/sdk/services/custom/SiaphDepthrole';
 import { SiaphNoteddocumentsApi } from './../../../../shared/sdk/services/custom/SiaphNoteddocuments';
+import { SiaphDocumentslibraryApi } from './../../../../shared/sdk/services/custom/SiaphDocumentslibrary';
 import { Storage } from '@ionic/storage';
 import { Camera } from '@ionic-native/camera';
 import { UUID } from 'angular2-uuid';
@@ -26,6 +27,9 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
   templateUrl: 'form-disposisi.html',
 })
 export class FormDisposisiPage {
+  public photoDataTemp: any;
+  public fileName: string;
+  
   public loadPub: any;
   public disposisiForm: any;
   public idStorage: any;
@@ -65,7 +69,8 @@ export class FormDisposisiPage {
     public fb: FormBuilder,
     public siaphNoteddocumentsApi: SiaphNoteddocumentsApi,
     private transfer: FileTransfer,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public siaphDocumentslibraryApi: SiaphDocumentslibraryApi
   ) {
     this.receiptDate = this.formatDate();
 
@@ -129,6 +134,11 @@ export class FormDisposisiPage {
         chunkedMode: false,
         mimeType: 'image/jpg'
       };
+
+      this.fileName = options.fileName;
+      this.photoDataTemp = this.photo;
+
+      console.log(this.photoDataTemp, 'Push Poto');
 
       let fileTransfer: FileTransferObject = this.transfer.create();
       fileTransfer.upload(this.photo, LoopBackConfig.getPath() + '/api/SiaphContainers/Doc/upload', options)
@@ -197,6 +207,18 @@ export class FormDisposisiPage {
         };
 
         this.siaphNoteddocumentsApi.create(dataNoteDoc).subscribe((result) => {
+
+          const library = {
+            idDoc: this.idDocument,
+            namePhoto: this.fileName
+          };
+
+          this.siaphDocumentslibraryApi.create(library).subscribe((result) => {
+            console.log('Sukses foto insert database');
+          }, (error) => {
+            console.log('Error Insert foto Database');
+          });
+          
           let confirm = this.alertCtrl.create({
             message: 'Success Disposisi',
             buttons: [
@@ -222,47 +244,6 @@ export class FormDisposisiPage {
 
   public reset() {
     console.log('Reset');
-  }
-
-  public takePicture(isCamera): any {
-
-    this.camera.getPicture({
-      quality: 50,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      sourceType: isCamera ? this.camera.PictureSourceType.CAMERA : this.camera.PictureSourceType.PHOTOLIBRARY,
-      allowEdit: false,
-      encodingType: this.camera.EncodingType.JPEG,
-      targetWidth: 300,
-      targetHeight: 300,
-      saveToPhotoAlbum: false,
-      cameraDirection: 1
-    }).then((imageData) => {
-
-      const options: FileUploadOptions = {
-        fileKey: 'file',
-        fileName: isCamera ? this.idDocument + '_IMG_' + UUID.UUID() + imageData.substr(imageData.lastIndexOf('/') + 1) : this.idDocument + '_IMG_' + UUID.UUID() + '.jpg',
-        chunkedMode: false,
-        mimeType: 'image/jpg'
-      };
-
-      this.navCtrl.push('AttendancePreviewPage', { status: status, datetime: this.receiptDate, photo: imageData, imageData: imageData, options: options });
-
-    }, (err) => {
-      console.log(err);
-
-      let alert = this.alertCtrl.create({
-        subTitle: (err == 'Camera cancelled.') ? 'Camera cancelled.' : 'Camera cancelled.',
-        buttons: [
-          {
-            text: 'Dismiss',
-            handler: () => {
-            }
-          }]
-      });
-      alert.present();
-
-    });
-
   }
 
   public formatDate() {
