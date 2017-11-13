@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { SiaphDocumentsApi } from './../../../../shared/sdk/services/custom/SiaphDocuments';
 import { SiaphTrackingdocumentsApi } from './../../../../shared/sdk/services/custom/SiaphTrackingdocuments';
 import { SiaphDepthroleApi } from './../../../../shared/sdk/services/custom/SiaphDepthrole';
 import { SiaphNoteddocumentsApi } from './../../../../shared/sdk/services/custom/SiaphNoteddocuments';
 import { Storage } from '@ionic/storage';
 import { Camera } from '@ionic-native/camera';
-import { FileUploadOptions } from '@ionic-native/file-transfer';
 import { UUID } from 'angular2-uuid';
 import moment from 'moment';
 import { FormBuilder, Validators } from '@angular/forms';
+import { LoopBackConfig } from './../../../../shared/sdk/lb.config';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+
 
 /**
  * Generated class for the FormDisposisiPage page.
@@ -24,6 +26,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   templateUrl: 'form-disposisi.html',
 })
 export class FormDisposisiPage {
+  public loadPub: any;
   public disposisiForm: any;
   public idStorage: any;
   public roleName: any;
@@ -60,7 +63,9 @@ export class FormDisposisiPage {
     public camera: Camera,
     public siaphTrackingdocumentsApi: SiaphTrackingdocumentsApi,
     public fb: FormBuilder,
-    public siaphNoteddocumentsApi: SiaphNoteddocumentsApi
+    public siaphNoteddocumentsApi: SiaphNoteddocumentsApi,
+    private transfer: FileTransfer,
+    public loadingCtrl: LoadingController
   ) {
     this.receiptDate = this.formatDate();
 
@@ -98,8 +103,57 @@ export class FormDisposisiPage {
 
   }
 
-  public funcCamera() {
-    console.log('Ambil Kamera');
+  public funcCamera(isCamera) {
+    this.loadPub = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    this.loadPub.present();
+    this.camera.getPicture({
+      quality: 50,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      sourceType: isCamera ? this.camera.PictureSourceType.CAMERA : this.camera.PictureSourceType.PHOTOLIBRARY,
+      allowEdit: false,
+      encodingType: this.camera.EncodingType.JPEG,
+      targetWidth: 300,
+      targetHeight: 300,
+      saveToPhotoAlbum: false,
+      cameraDirection: 1
+    }).then((imageData) => {
+
+      this.photo = imageData;
+
+
+      let options: FileUploadOptions = {
+        fileKey: 'file',
+        fileName: isCamera ? 'IMG_' + UUID.UUID() + this.photo.substr(this.photo.lastIndexOf('/') + 1) : 'IMG_' + UUID.UUID() + '.jpg',
+        chunkedMode: false,
+        mimeType: 'image/jpg'
+      };
+
+      let fileTransfer: FileTransferObject = this.transfer.create();
+      fileTransfer.upload(this.photo, LoopBackConfig.getPath() + '/api/SiaphContainers/Doc/upload', options)
+        .then((data) => {
+          this.loadPub.dismiss();
+          console.log(data, 'Data Sukses')
+          console.log('Sukses Upload Foto')
+        });
+
+    }, (err) => {
+      console.log(err);
+      this.loadPub.dismiss();
+
+      let alert = this.alertCtrl.create({
+        subTitle: (err == 'Camera cancelled.') ? 'Camera cancelled.' : 'Camera cancelled.',
+        buttons: [
+          {
+            text: 'Dismiss',
+            handler: () => {
+            }
+          }]
+      });
+      alert.present();
+
+    });
   }
 
   public submit() {
