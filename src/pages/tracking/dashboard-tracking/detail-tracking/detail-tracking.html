@@ -14,42 +14,53 @@
 
 
 <ion-content padding>
+  <ion-segment [(ngModel)]="DOCUMENTS">
+    <ion-segment-button value="DOC">
+      DISPOSISI
+    </ion-segment-button>
+    <ion-segment-button value="NOTED">
+      NOTED
+    </ion-segment-button>
+  </ion-segment>
+
   <br/>
   <br/>
-  <ion-row responsive>
-    <ion-col col-12>
-      <ion-slides [slidesPerView]="3" #mySlider>
-        <div class="mdl-card mdl-shadow--2dp">
-          <div class="mdl-card__supporting-text">
-            <div class="mdl-stepper-horizontal-alternative">
+  <div [ngSwitch]="DOCUMENTS">
+    <ion-list *ngSwitchCase="'DOC'">
+      <ion-row responsive>
+        <ion-col col-12>
+          <ion-slides [slidesPerView]="3" #mySlider>
+            <div class="mdl-card mdl-shadow--2dp">
+              <div class="mdl-card__supporting-text">
+                <div class="mdl-stepper-horizontal-alternative">
 
-              <ion-slide>
-                <div class="mdl-stepper-step active-step">
-                  <div class="mdl-stepper-circle">
-                    <span>
-                      <ion-icon name="information"></ion-icon>
-                    </span>
-                  </div>
-                  <div class="mdl-stepper-title">{{dataTemp.RoleFrom}}</div>
-                  <!-- <div class="mdl-stepper-bar-left"></div> -->
-                  <div class="mdl-stepper-bar-right"></div>
-                </div>
-              </ion-slide>
+                  <ion-slide>
+                    <div class="mdl-stepper-step active-step">
+                      <div class="mdl-stepper-circle">
+                        <span>
+                          <ion-icon name="information"></ion-icon>
+                        </span>
+                      </div>
+                      <div class="mdl-stepper-title">{{dataTemp.RoleFrom}}</div>
+                      <!-- <div class="mdl-stepper-bar-left"></div> -->
+                      <div class="mdl-stepper-bar-right"></div>
+                    </div>
+                  </ion-slide>
 
-              <ion-slide *ngFor="let datas of dynamicData">
-                <div class="mdl-stepper-step active-step">
-                  <div class="mdl-stepper-circle">
-                    <span>
-                      <ion-icon name="information"></ion-icon>
-                    </span>
-                  </div>
-                  <div class="mdl-stepper-title">{{datas}}</div>
-                  <div class="mdl-stepper-bar-left"></div>
-                  <div class="mdl-stepper-bar-right"></div>
-                </div>
-              </ion-slide>
+                  <ion-slide *ngFor="let datas of dynamicData">
+                    <div class="mdl-stepper-step active-step">
+                      <div class="mdl-stepper-circle">
+                        <span>
+                          <ion-icon name="information"></ion-icon>
+                        </span>
+                      </div>
+                      <div class="mdl-stepper-title">{{datas}}</div>
+                      <div class="mdl-stepper-bar-left"></div>
+                      <div class="mdl-stepper-bar-right"></div>
+                    </div>
+                  </ion-slide>
 
-              <!-- <ion-slide *ngIf="dynamicData.length == 2">
+                  <!-- <ion-slide *ngIf="dynamicData.length == 2">
                 <div class="mdl-stepper-step active-step">
                   <div class="mdl-stepper-circle">
                     <span>
@@ -62,110 +73,128 @@
                 </div>
               </ion-slide> -->
 
-              <ion-slide [hidden]="shiwFinish">
-                <div class="mdl-stepper-step">
-                  <div class="mdl-stepper-circle">
-                    <span>
-                      <ion-icon name="help"></ion-icon>
-                    </span>
-                  </div>
-                  <div class="mdl-stepper-title">Fully Approved</div>
-                  <div class="mdl-stepper-bar-left"></div>
-                  <!-- <div class="mdl-stepper-bar-right"></div> -->
-                </div>
-              </ion-slide>
+                  <ion-slide [hidden]="shiwFinish">
+                    <div class="mdl-stepper-step">
+                      <div class="mdl-stepper-circle">
+                        <span>
+                          <ion-icon name="help"></ion-icon>
+                        </span>
+                      </div>
+                      <div class="mdl-stepper-title">Fully Approved</div>
+                      <div class="mdl-stepper-bar-left"></div>
+                      <!-- <div class="mdl-stepper-bar-right"></div> -->
+                    </div>
+                  </ion-slide>
 
-              <ion-slide [hidden]="showFinish">
-                <div class="mdl-stepper-step">
-                  <div class="mdl-stepper-circle">
-                    <span>
-                      <ion-icon name="help"></ion-icon>
-                    </span>
-                  </div>
-                  <div class="mdl-stepper-title">Waiting Approval</div>
-                  <div class="mdl-stepper-bar-left"></div>
-                  <!-- <div class="mdl-stepper-bar-right"></div> -->
-                </div>
-              </ion-slide>
+                  <ion-slide [hidden]="showFinish">
+                    <div class="mdl-stepper-step">
+                      <div class="mdl-stepper-circle">
+                        <span>
+                          <ion-icon name="help"></ion-icon>
+                        </span>
+                      </div>
+                      <div class="mdl-stepper-title">Waiting Approval</div>
+                      <div class="mdl-stepper-bar-left"></div>
+                      <!-- <div class="mdl-stepper-bar-right"></div> -->
+                    </div>
+                  </ion-slide>
 
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </ion-slides>
-    </ion-col>
-  </ion-row>
-
-  <br/>
-  <br/>
-
-  <ion-list>
-
-    <ion-item>
-      <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Letter Number</ion-label>
-      <ion-textarea rows="2" [(ngModel)]="docNo" disabled></ion-textarea>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Subject</ion-label>
-      <ion-textarea rows="4" [(ngModel)]="docSubject" disabled></ion-textarea>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Agenda Number</ion-label>
-      <ion-textarea rows="2" [(ngModel)]="agendaNo" disabled></ion-textarea>
-    </ion-item>
-
-  </ion-list>
-
-  <div>
-    <img src="assets/image/org-line.png" />
-  </div>
-
-  <br/>
-  <br/>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col col-6 class="label-bottom">
-        Status Disposisi
-      </ion-col>
-      <ion-col col-1 class="label-bottom">
-        :
-      </ion-col>
-
-      <ion-col col-5 *ngIf="showFinish == true">
-        <ion-chip color="danger">
-          <ion-label>{{statusDisposisi}} Disposisi</ion-label>
-        </ion-chip>
-      </ion-col>
-
-      <ion-col col-5 *ngIf="showFinish == false">
-          <ion-chip color="primary">
-            <ion-label>{{statusDisposisi}} Disposisi</ion-label>
-          </ion-chip>
+          </ion-slides>
         </ion-col>
-    </ion-row>
+      </ion-row>
 
-    <ion-row>
-      <ion-col col-12 class="label-bottom">
-        <ion-item>
-          <ion-label floating>Letter To</ion-label>
-          <ion-select [(ngModel)]="selectto">
-            <ion-option *ngFor="let i of dataDepthRole" value="{{i.idRole}}">{{i.nameRole}}</ion-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+      <br/>
+      <br/>
 
-    <ion-row>
-      <ion-col col-12>
+      <ion-list>
+
         <ion-item>
-          <ion-label floating style="margin-bottom: 20px !important;font-size: 13px; font-family: 'Arial'; font-weight: bold;">Noted</ion-label>
-          <ion-textarea rows="4" [(ngModel)]="noted" placeholder="Enter Here"></ion-textarea>
+          <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Letter Number</ion-label>
+          <ion-textarea rows="2" [(ngModel)]="docNo" disabled></ion-textarea>
         </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
+        <ion-item>
+          <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Subject</ion-label>
+          <ion-textarea rows="4" [(ngModel)]="docSubject" disabled></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Agenda Number</ion-label>
+          <ion-textarea rows="2" [(ngModel)]="agendaNo" disabled></ion-textarea>
+        </ion-item>
+
+      </ion-list>
+
+      <div>
+        <img src="assets/image/org-line.png" />
+      </div>
+
+      <br/>
+      <br/>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 class="label-bottom">
+            Status Disposisi
+          </ion-col>
+          <ion-col col-1 class="label-bottom">
+            :
+          </ion-col>
+
+          <ion-col col-5 *ngIf="showFinish == true">
+            <ion-chip color="danger">
+              <ion-label>{{statusDisposisi}} Disposisi</ion-label>
+            </ion-chip>
+          </ion-col>
+
+          <ion-col col-5 *ngIf="showFinish == false">
+            <ion-chip color="primary">
+              <ion-label>{{statusDisposisi}} Disposisi</ion-label>
+            </ion-chip>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-12 class="label-bottom">
+            <ion-item>
+              <ion-label floating>Letter To</ion-label>
+              <ion-select [(ngModel)]="selectto">
+                <ion-option *ngFor="let i of dataDepthRole" value="{{i.idRole}}">{{i.nameRole}}</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <ion-label floating style="margin-bottom: 20px !important;font-size: 13px; font-family: 'Arial'; font-weight: bold;">Noted</ion-label>
+              <ion-textarea rows="4" [(ngModel)]="noted" placeholder="Enter Here"></ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-list>
+    <ion-list *ngSwitchCase="'NOTED'">
+      <ion-list [hidden]="listNotesView">
+        <ion-item *ngFor="let noteds of notes">
+          <ion-avatar item-start>
+            <img src="assets/image/logo-tangsel.png">
+          </ion-avatar>
+          <h2>{{noteds.peopleNotes}}</h2>
+          <p text-wrap>{{noteds.notesDoc}}</p>
+        </ion-item>
+      </ion-list>
+
+      <div [hidden]="listNotesShow">
+        <p align="center">There's Empty Note's</p>
+      </div>
+    </ion-list>
+  </div>
 </ion-content>
 
 <ion-footer>
