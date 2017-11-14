@@ -58,6 +58,7 @@ export class ChangePasswordPage {
     let re = md5(this.repass);
 
     if (passNew != re) {
+      loading.dismiss();
       let alert = this.alertCtrl.create({
         subTitle: 'Your password not same, please check re-type and new password!',
         buttons: ['Dismiss']
