@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, LoadingController, ModalController } from 'ionic-angular';
 import { SiaphDocumentsApi } from './../../../shared/sdk/services/custom/SiaphDocuments';
 import { SiaphDepthroleApi } from './../../../shared/sdk/services/custom/SiaphDepthrole';
+import { SiaphUsercredentialApi } from './../../../shared/sdk/services/custom/SiaphUsercredential';
 import { Storage } from '@ionic/storage';
 /**
  * Generated class for the DashboardTrackingPage page.
@@ -36,6 +37,10 @@ export class DashboardTrackingPage {
   public selfData: any;
   public nameUser: any;
   public publicRot: any;
+
+
+  public memberAll: any;
+  public dephtRoleAll: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -44,7 +49,8 @@ export class DashboardTrackingPage {
     public actionSheetCtrl: ActionSheetController,
     public loadingCtrl: LoadingController,
     public siaphDepthroleApi: SiaphDepthroleApi,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public siaphUsercredentialApi: SiaphUsercredentialApi
   ) {
 
   }
@@ -97,6 +103,7 @@ export class DashboardTrackingPage {
             this.isView = false;
             this.notView = true;
           }
+          console.log(this.name, 'agaga');
           this.siaphDepthroleApi.find({
             where: {
               userRole: this.name
@@ -105,7 +112,13 @@ export class DashboardTrackingPage {
             console.log(result, 'Name user');
             this.selfData = result;
             this.nameUser =this.selfData[0].nameRole;
-            loader.dismiss();
+
+            this.siaphDepthroleApi.find().subscribe((result) => {
+              this.memberAll = result;
+              loader.dismiss();
+              console.log(this.memberAll, 'Member All');
+
+            });
           });
         });
       });

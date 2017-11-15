@@ -123,7 +123,14 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'MACCOUNT'" [hidden]="shiwMenu">
-      MANAGE ACCOUNT
+      <ion-list>
+        <ion-item *ngFor="let members of memberAll">
+          <ion-avatar item-start>
+            <img src="assets/image/logo-tangsel.png">
+          </ion-avatar>
+          <h2>{{members.nameRole}}</h2>
+        </ion-item>
+      </ion-list>
     </ion-list>
 
     <ion-list *ngSwitchCase="'TRACKING'">
