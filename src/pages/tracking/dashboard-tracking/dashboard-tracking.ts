@@ -94,7 +94,7 @@ export class DashboardTrackingPage {
         this.siaphDocumenApi.getDataDocument(data).subscribe((result) => {
           console.log(result);
           this.dataDocument = result;
-          this.dataDocumentLength = this.dataDocument.getDataDocument.length
+          this.dataDocumentLength = this.dataDocument.length
           console.log(this.dataDocumentLength, 'Length Doc');
           if (this.dataDocumentLength == 0) {
             this.isView = true;
