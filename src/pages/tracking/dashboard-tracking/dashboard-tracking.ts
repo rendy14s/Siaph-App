@@ -18,6 +18,7 @@ import { OneSignal } from '@ionic-native/onesignal';
   templateUrl: 'dashboard-tracking.html',
 })
 export class DashboardTrackingPage {
+  public mineParams: any;
 
   public photo: string;
 
@@ -75,7 +76,7 @@ export class DashboardTrackingPage {
         this.idStorage = this.storageData.idUser;
 
         console.log(this.storageData, 'Storage');
-
+        this.mineParams = this.storageData.depthCode;
         if (this.accessRoot != 2) {
           console.log('Admin Root');
           this.publicRot = 'You are the Administrator'
@@ -137,7 +138,8 @@ export class DashboardTrackingPage {
   }
 
   public createDisposisi() {
-    this.navCtrl.push('FormDisposisiPage');
+    console.log(this.mineParams);
+    this.navCtrl.push('FormDisposisiPage', { mines: this.mineParams });
   }
 
   public logout() {
