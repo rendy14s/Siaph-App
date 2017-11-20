@@ -4,6 +4,7 @@ import { SiaphDocumentsApi } from './../../../shared/sdk/services/custom/SiaphDo
 import { SiaphDepthroleApi } from './../../../shared/sdk/services/custom/SiaphDepthrole';
 import { SiaphUsercredentialApi } from './../../../shared/sdk/services/custom/SiaphUsercredential';
 import { Storage } from '@ionic/storage';
+import { OneSignal } from '@ionic-native/onesignal';
 /**
  * Generated class for the DashboardTrackingPage page.
  *
@@ -50,6 +51,7 @@ export class DashboardTrackingPage {
     public loadingCtrl: LoadingController,
     public siaphDepthroleApi: SiaphDepthroleApi,
     public modalCtrl: ModalController,
+    public onesignal: OneSignal,
     public siaphUsercredentialApi: SiaphUsercredentialApi
   ) {
 
@@ -145,7 +147,7 @@ export class DashboardTrackingPage {
         {
           text: 'Yes, Im logout',
           handler: () => {
-            // this.oneSignal.deleteTags(['userid']);
+            this.onesignal.deleteTags(['userid']);
             this.storage.clear();
             window.localStorage.clear();
             this.navCtrl.setRoot('HomePage');
