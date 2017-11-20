@@ -123,6 +123,7 @@ export class DetailTrackingPage {
               idRole: this.dataTracking[0]['fromDoc']
             }
           }).subscribe((result2) => {
+            console.log(result2[0]['nameRole'], 'ROLEEE 3');
             result2['RoleFrom'] = result2[0]['nameRole'];
             this.dataTemp = result2;
 
@@ -142,14 +143,13 @@ export class DetailTrackingPage {
                   idRole: this.dataTracking[i].toDoc
                 }
               }).subscribe((result3) => {
+                console.log(result3[0]['nameRole'], 'ROLEEE 1');
                 this.dynamicData[i] = result3[0]['nameRole'];
                 this.arrayLength = this.dynamicData.length - 1;
               });
             }
           });
         });
-
-
       });
     });
 
@@ -309,7 +309,7 @@ export class DetailTrackingPage {
         }).subscribe((result) => {
           this.peopleNote = result;
           console.log(this.peopleNote, 'People');
-
+          console.log(this.peopleNote[a]['nameRole'], 'ROLEEE 2');
           this.notes[a]['peopleNotes'] = this.peopleNote[a]['nameRole'];
         });
       }

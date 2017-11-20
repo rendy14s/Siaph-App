@@ -20,11 +20,17 @@
     <img *ngIf="photo !== ''" [ngStyle]="{'background-image': 'url(' + photo + ')'}" class="foto-div">
   </div>
 
+  <ion-item>
+      <ion-label>Letter From</ion-label>
+      <ion-input type="text" [(ngModel)]="mine" disabled></ion-input>
+    </ion-item>
+
+
   <form [formGroup]="disposisiForm">
     <ion-list>
 
       <ion-item>
-        <ion-label floating>Letter To</ion-label>
+        <ion-label floating>Letter Tracking</ion-label>
         <ion-select formControlName="selectto">
           <ion-option *ngFor="let i of dataDepthRole" value="{{i.idRole}}">{{i.nameRole}}</ion-option>
         </ion-select>

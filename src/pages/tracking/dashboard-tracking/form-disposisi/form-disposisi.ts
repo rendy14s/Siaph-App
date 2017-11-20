@@ -27,6 +27,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
   templateUrl: 'form-disposisi.html',
 })
 export class FormDisposisiPage {
+  public mine: any;
   public photoDataTemp: any;
   public fileName: string;
   
@@ -72,16 +73,9 @@ export class FormDisposisiPage {
     public loadingCtrl: LoadingController,
     public siaphDocumentslibraryApi: SiaphDocumentslibraryApi
   ) {
-    this.receiptDate = this.formatDate();
+    this.mine = this.navParams.get('mines');
 
-    this.disposisiForm = this.fb.group({
-      'selectto': ['TIM PEMBAHASAN RAPERWAL', Validators.compose([Validators.required])],
-      'nodoc': ['', Validators.compose([Validators.required])],
-      'receiptDate': [this.receiptDate, Validators.compose([Validators.required])],
-      'noAgenda': ['', Validators.compose([Validators.required])],
-      'subject': ['', Validators.compose([Validators.required])],
-      'noted': ['', Validators.compose([Validators.required])],
-    });
+    this.receiptDate = this.formatDate();
 
     this.storage.ready().then(() => {
       this.storage.get('siaphCredential').then((siaphCredential) => {
@@ -94,13 +88,28 @@ export class FormDisposisiPage {
           this.dataRole = results;
           this.roleName = this.dataRole.nameRole;
           console.log(this.roleName, 'Role');
+          
 
-          this.siaphDepthroleApi.find().subscribe((result) => {
+          this.siaphDepthroleApi.find({
+            where: {
+              depthCode: { nlike: this.mine} 
+            }
+          }).subscribe((result) => {
             this.dataDepthRole = result;
             console.log(this.dataDepthRole, 'Data Role');
           });
         });
       });
+    });
+
+
+    this.disposisiForm = this.fb.group({
+      'selectto': ['TIM PEMBAHASAN RAPERWAL', Validators.compose([Validators.required])],
+      'nodoc': ['', Validators.compose([Validators.required])],
+      'receiptDate': [this.receiptDate, Validators.compose([Validators.required])],
+      'noAgenda': ['', Validators.compose([Validators.required])],
+      'subject': ['', Validators.compose([Validators.required])],
+      'noted': ['', Validators.compose([Validators.required])],
     });
   }
 
@@ -108,7 +117,7 @@ export class FormDisposisiPage {
 
   }
 
-  public funcCamera(isCamera) {
+  public funcCamera() {
     this.loadPub = this.loadingCtrl.create({
       content: 'Please wait...'
     });
@@ -116,7 +125,7 @@ export class FormDisposisiPage {
     this.camera.getPicture({
       quality: 50,
       destinationType: this.camera.DestinationType.FILE_URI,
-      sourceType: isCamera ? this.camera.PictureSourceType.CAMERA : this.camera.PictureSourceType.PHOTOLIBRARY,
+      sourceType: this.camera.PictureSourceType.CAMERA,
       allowEdit: false,
       encodingType: this.camera.EncodingType.JPEG,
       targetWidth: 300,
@@ -130,7 +139,7 @@ export class FormDisposisiPage {
 
       let options: FileUploadOptions = {
         fileKey: 'file',
-        fileName: isCamera ? 'IMG_' + UUID.UUID() + this.photo.substr(this.photo.lastIndexOf('/') + 1) : 'IMG_' + UUID.UUID() + '.jpg',
+        fileName: 'IMG_' + UUID.UUID() + this.photo.substr(this.photo.lastIndexOf('/') + 1),
         chunkedMode: false,
         mimeType: 'image/jpg'
       };
