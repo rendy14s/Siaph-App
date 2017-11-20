@@ -15,6 +15,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SDKBrowserModule } from '../shared/sdk/index';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Camera } from '@ionic-native/camera';
+import { OneSignal } from '@ionic-native/onesignal';
 
 
 
@@ -42,6 +43,7 @@ import { Camera } from '@ionic-native/camera';
     SplashScreen,
     FileTransfer,
     Camera,
+    OneSignal,
     FileOpener,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
