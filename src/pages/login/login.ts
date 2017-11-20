@@ -107,7 +107,7 @@ export class LoginPage {
     }).subscribe((loginDo) => {
       
       this.dataLogin = loginDo;
-
+      console.log(this.dataLogin, 'DATALOGIN');
       this.storage.set('siaphCredential', this.dataLogin).then(() => {
         this.onesignal.sendTags({ 'userid': this.dataLogin.idUser });
         loading.dismiss();
