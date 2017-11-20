@@ -2,6 +2,7 @@ import { Component, trigger, state, style, transition, animate, keyframes } from
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { SiaphUsercredentialApi } from './../../shared/sdk/services/custom/SiaphUsercredential';
 import { Storage } from '@ionic/storage';
+import { OneSignal } from '@ionic-native/onesignal';
 import { md5 } from './../../assets/private/HashSalt';
 /**
  * Generated class for the LoginPage page.
@@ -78,7 +79,8 @@ export class LoginPage {
     public SiaphuserCredentialApi: SiaphUsercredentialApi,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    public storage: Storage
+    public storage: Storage,
+    public onesignal: OneSignal
   ) {
   }
 
@@ -107,6 +109,7 @@ export class LoginPage {
       this.dataLogin = loginDo;
 
       this.storage.set('siaphCredential', this.dataLogin).then(() => {
+        this.onesignal.sendTags({ 'userid': this.dataLogin.idUser });
         loading.dismiss();
         this.navCtrl.setRoot('DashboardTrackingPage', { tabSet: 'HOME' });
       });
