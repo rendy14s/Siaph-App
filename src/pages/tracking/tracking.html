@@ -8,74 +8,39 @@
 <ion-content padding class="bg-content">
 
   <div class="header-title">
-    <h5 class="title"><b>DOKUMENT TRACKING DISPOSISI</b></h5>
+    <h5 class="title">
+      <b>DOKUMENT TRACKING DISPOSISI</b>
+    </h5>
   </div>
 
 
-  <div class="row" style="background-color: #808080">
-    <div class="col">No. Surat</div>
-    <div class="col">Perihal</div>
-    <div class="col">Status</div>
-  </div>
+  <ion-grid>
+    <ion-row style="background-color: #ffffff">
+      <ion-col col-4>No. Surat</ion-col>
+      <ion-col col-4>Perihal</ion-col>
+      <ion-col col-4>Created</ion-col>
+    </ion-row>
 
-  <div class="container-table">
-    <div class="row" style="background-color: #DFE3E3;">
-      <div class="col" (click)="modalShow()">ASD</div>
-      <div class="col">123</div>
-      <div class="col">LK </div>
+    <div class="container-table">
+      <!-- <ion-row (click)="modalShow(datas.idDoc)" *ngFor="let datas of dataDocuments" style="background-color: #ffffff"> -->
+      <ion-row *ngFor="let datas of dataDocuments" style="background-color: #ffffff">
+        <ion-col col-4>{{datas.idDoc}}</ion-col>
+        <ion-col col-4 text-wrap>{{datas.subjectDoc}}</ion-col>
+        <ion-col col-4>{{datas.createDateDoc | date:'short'}}</ion-col>
+      </ion-row>
     </div>
-    <div class="row" style="background-color: #DFE3E3;">
-      <div class="col">ASD</div>
-      <div class="col">123</div>
-      <div class="col">LK </div>
-    </div>
-    <div class="row" style="background-color: #DFE3E3;">
-      <div class="col">ASD</div>
-      <div class="col">123</div>
-      <div class="col">LK </div>
-    </div>
-    <div class="row" style="background-color: #DFE3E3;">
-      <div class="col">ASD</div>
-      <div class="col">123</div>
-      <div class="col">LK </div>
-    </div>
-    <div class="row" style="background-color: #DFE3E3;">
-      <div class="col">ASD</div>
-      <div class="col">123</div>
-      <div class="col">LK </div>
-    </div>
-    <div class="row" style="background-color: #DFE3E3;">
-      <div class="col">ASD</div>
-      <div class="col">123</div>
-      <div class="col">LK </div>
-    </div>
-    <div class="row" style="background-color: #DFE3E3;">
-      <div class="col">ASD</div>
-      <div class="col">123</div>
-      <div class="col">LK </div>
-    </div>
-    <div class="row" style="background-color: #DFE3E3;">
-      <div class="col">ASD</div>
-      <div class="col">123</div>
-      <div class="col">LK </div>
-    </div>
-    <div class="row" style="background-color: #DFE3E3;">
-      <div class="col">ASD</div>
-      <div class="col">123</div>
-      <div class="col">LK </div>
-    </div>
-  </div>
+  </ion-grid>
 
   <img style="margin-top: 7em;" src="assets/img/banner_jdih_release.png">
 </ion-content>
 
 <ion-footer>
-    <ion-toolbar>
-      <div class="btn-footer-action-page">
-        <ul align="center">
-          <li tappable (click)="back()">Back</li>
-          <li tappable (click)="login()">Login</li>
-        </ul>
-      </div>
-    </ion-toolbar>
-  </ion-footer>
+  <ion-toolbar>
+    <div class="btn-footer-action-page">
+      <ul align="center">
+        <li tappable (click)="back()">Back</li>
+        <li tappable (click)="login()">Login</li>
+      </ul>
+    </div>
+  </ion-toolbar>
+</ion-footer>

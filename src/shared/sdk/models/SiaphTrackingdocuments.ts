@@ -58,6 +58,7 @@ export class SiaphTrackingdocuments implements SiaphTrackingdocumentsInterface {
       name: 'SiaphTrackingdocuments',
       plural: 'SiaphTrackingdocuments',
       path: 'SiaphTrackingdocuments',
+      idName: 'idTracking',
       properties: {
         "statusDisposisi": {
           name: 'statusDisposisi',

@@ -20,9 +20,6 @@
       <ion-segment-button value="status">
         Status
       </ion-segment-button>
-      <ion-segment-button value="detail">
-        Detail
-      </ion-segment-button>
       <ion-segment-button value="noted">
         Noted
       </ion-segment-button>
@@ -31,75 +28,7 @@
 
   <div [ngSwitch]="tracking">
     <ion-list *ngSwitchCase="'status'">
-      <div class="container-table">
-        <div class="mdl-card mdl-shadow--2dp">
-          <div class="mdl-card__supporting-text">
-            <div class="mdl-stepper-horizontal-alternative">
-              <div class="mdl-stepper-step">
-                <div class="mdl-stepper-circle">
-                  <span>1</span>
-                </div>
-                <div class="mdl-stepper-title">Staff PPHD</div>
-                <div class="mdl-stepper-bar-left"></div>
-                <div class="mdl-stepper-bar-right"></div>
-              </div>
-              <div class="mdl-stepper-step">
-                <div class="mdl-stepper-circle">
-                  <span>2</span>
-                </div>
-                <div class="mdl-stepper-title">Kepala Sub Bagian PPHD</div>
-                <div class="mdl-stepper-bar-left"></div>
-                <div class="mdl-stepper-bar-right"></div>
-              </div>
-              <div class="mdl-stepper-step">
-                <div class="mdl-stepper-circle">
-                  <span>3</span>
-                </div>
-                <div class="mdl-stepper-title">Kepala Sub Bagian Dokumentasi</div>
-                <div class="mdl-stepper-bar-left"></div>
-                <div class="mdl-stepper-bar-right"></div>
-              </div>
-              <div class="mdl-stepper-step">
-                <div class="mdl-stepper-circle">
-                  <span>4</span>
-                </div>
-                <div class="mdl-stepper-title">OPD</div>
-                <div class="mdl-stepper-bar-left"></div>
-                <div class="mdl-stepper-bar-right"></div>
-              </div>
-              <div class="mdl-stepper-step">
-                <div class="mdl-stepper-circle">
-                  <span>5</span>
-                </div>
-                <div class="mdl-stepper-title">Tim Pembahasan Raperwal</div>
-                <div class="mdl-stepper-bar-left"></div>
-                <div class="mdl-stepper-bar-right"></div>
-              </div>
-              <div class="mdl-stepper-step">
-                <div class="mdl-stepper-circle">
-                  <span>6</span>
-                </div>
-                <div class="mdl-stepper-title">Assisten Daerah</div>
-                <div class="mdl-stepper-bar-left"></div>
-                <div class="mdl-stepper-bar-right"></div>
-              </div>
-              <div class="mdl-stepper-step active-step">
-                <div class="mdl-stepper-circle">
-                  <span>7</span>
-                </div>
-                <div class="mdl-stepper-title">Sekretaris Daerah</div>
-                <div class="mdl-stepper-bar-left"></div>
-                <div class="mdl-stepper-bar-right"></div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </ion-list>
-
-    <ion-list *ngSwitchCase="'detail'">
-      DETAIL
+      STATUS
     </ion-list>
 
     <ion-list *ngSwitchCase="'noted'">
@@ -111,11 +40,6 @@
 
 <ion-footer>
   <ion-toolbar>
-    <div class="btn-footer-action-page">
-      <ul align="center">
-        <li tappable (click)="exit()">Done</li>
-        <li tappable (click)="noted()">Noted</li>
-      </ul>
-    </div>
+    <button ion-button round full (click)="exit()">Back</button>
   </ion-toolbar>
 </ion-footer>

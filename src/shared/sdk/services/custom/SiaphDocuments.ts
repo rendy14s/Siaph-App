@@ -102,18 +102,50 @@ export class SiaphDocumentsApi extends BaseLoopBackApi {
    *
    * This method expects a subset of model properties as request parameters.
    *
-   * @returns {object} An empty reference that will be
+   * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
    *
-   * Data properties:
-   *
-   *  - `getDataDocument` – `{any}` - 
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `SiaphDocuments` object.)
+   * </em>
    */
   public getDataDocument(params: any, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/SiaphDocuments/getDataDocument";
+    let _routeParams: any = {};
+    let _postBody: any = {
+      params: params
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   * This method expects a subset of model properties as request parameters.
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `SiaphDocuments` object.)
+   * </em>
+   */
+  public getDataDocumentAll(params: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/SiaphDocuments/getDataDocumentAll";
     let _routeParams: any = {};
     let _postBody: any = {
       params: params

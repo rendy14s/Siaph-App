@@ -44,6 +44,7 @@ export class SiaphDepthrole implements SiaphDepthroleInterface {
       name: 'SiaphDepthrole',
       plural: 'SiaphDepthroles',
       path: 'SiaphDepthroles',
+      idName: 'idRole',
       properties: {
         "userRole": {
           name: 'userRole',

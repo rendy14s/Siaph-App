@@ -3,7 +3,7 @@
 declare var Object: any;
 export interface SiaphDocumentslibraryInterface {
   "idDoc": number;
-  "namePhoto": string;
+  "namePhoto"?: string;
   "idPhoto"?: number;
 }
 
@@ -42,6 +42,7 @@ export class SiaphDocumentslibrary implements SiaphDocumentslibraryInterface {
       name: 'SiaphDocumentslibrary',
       plural: 'SiaphDocumentslibraries',
       path: 'SiaphDocumentslibraries',
+      idName: 'idPhoto',
       properties: {
         "idDoc": {
           name: 'idDoc',

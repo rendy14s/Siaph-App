@@ -54,6 +54,7 @@ export class SiaphDocuments implements SiaphDocumentsInterface {
       name: 'SiaphDocuments',
       plural: 'SiaphDocuments',
       path: 'SiaphDocuments',
+      idName: 'idDoc',
       properties: {
         "noDoc": {
           name: 'noDoc',

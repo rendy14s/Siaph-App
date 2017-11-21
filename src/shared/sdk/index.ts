@@ -1,3 +1,4 @@
+/* tslint:disable */
 /**
 * @module SDKModule
 * @author Jonathan Casarrubias <t:@johncasarrubias> <gh:jonathan-casarrubias>
@@ -58,6 +59,7 @@ import { SiaphDocumentslibraryApi } from './services/custom/SiaphDocumentslibrar
 import { SiaphNoteddocumentsApi } from './services/custom/SiaphNoteddocuments';
 import { SiaphTrackingdocumentsApi } from './services/custom/SiaphTrackingdocuments';
 import { SiaphUsercredentialApi } from './services/custom/SiaphUsercredential';
+import { SiaphContainerApi } from './services/custom/SiaphContainer';
 /**
 * @module SDKBrowserModule
 * @description
@@ -99,6 +101,7 @@ export class SDKBrowserModule {
         SiaphNoteddocumentsApi,
         SiaphTrackingdocumentsApi,
         SiaphUsercredentialApi,
+        SiaphContainerApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }
@@ -116,3 +119,4 @@ export * from './lb.config';
 export * from './storage/storage.swaps';
 export { CookieBrowser } from './storage/cookie.browser';
 export { StorageBrowser } from './storage/storage.browser';
+

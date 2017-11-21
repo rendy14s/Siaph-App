@@ -2,10 +2,10 @@
 
 declare var Object: any;
 export interface SiaphUsercredentialInterface {
-  "username": string;
+  "username"?: string;
   "password": string;
-  "depthCode": string;
-  "access": string;
+  "depthCode"?: string;
+  "access"?: string;
   "idUser"?: number;
 }
 
@@ -46,6 +46,7 @@ export class SiaphUsercredential implements SiaphUsercredentialInterface {
       name: 'SiaphUsercredential',
       plural: 'SiaphUsercredentials',
       path: 'SiaphUsercredentials',
+      idName: 'idUser',
       properties: {
         "username": {
           name: 'username',

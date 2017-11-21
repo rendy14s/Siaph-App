@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { SiaphDocumentsApi } from './../../shared/sdk/services/custom/SiaphDocuments';
 /**
  * Generated class for the TrackingPage page.
  *
@@ -14,28 +14,29 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'tracking.html',
 })
 export class TrackingPage {
+  public dataDocuments: any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    public storage: Storage
+    public siaphDocumentsApi: SiaphDocumentsApi,
   ) {
-    this.storage.ready().then(() => {
-      this.storage.get('siaphCredential').then((siaphCredential) => {
-        if (siaphCredential != null || siaphCredential != undefined) {
-          this.navCtrl.setRoot('DashboardTrackingPage', { tabSet: 'HOME' });
-        }
-      });
-    });
-  }
-
-  ionViewDidLoad() {
     
   }
 
-  public modalShow() {
-    let view = this.modalCtrl.create('PeopleDetailViewPage');
+  ionViewDidLoad() {
+    const limit = {
+      limit: 3
+    }
+    this.siaphDocumentsApi.getDataDocumentAll(limit).subscribe(result => {
+      console.log(result, 'Result');
+      this.dataDocuments = result;
+    })
+  }
+
+  public modalShow(event) {
+    let view = this.modalCtrl.create('PeopleDetailViewPage', { data: event });
     view.present();
   }
 

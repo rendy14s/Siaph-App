@@ -10,6 +10,7 @@ import { SiaphDocumentslibrary } from '../../models/SiaphDocumentslibrary';
 import { SiaphNoteddocuments } from '../../models/SiaphNoteddocuments';
 import { SiaphTrackingdocuments } from '../../models/SiaphTrackingdocuments';
 import { SiaphUsercredential } from '../../models/SiaphUsercredential';
+import { SiaphContainer } from '../../models/SiaphContainer';
 
 export interface Models { [name: string]: any }
 
@@ -27,6 +28,7 @@ export class SDKModels {
     SiaphNoteddocuments: SiaphNoteddocuments,
     SiaphTrackingdocuments: SiaphTrackingdocuments,
     SiaphUsercredential: SiaphUsercredential,
+    SiaphContainer: SiaphContainer,
     
   };
 

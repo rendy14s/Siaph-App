@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
+import { SiaphDocumentsApi } from './../../../shared/sdk/services/custom/SiaphDocuments';
+import { SiaphTrackingdocumentsApi } from './../../../shared/sdk/services/custom/SiaphTrackingdocuments';
+import { SiaphDepthroleApi } from './../../../shared/sdk/services/custom/SiaphDepthrole';
 /**
  * Generated class for the PeopleDetailViewPage page.
  *
@@ -14,18 +16,24 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   templateUrl: 'people-detail-view.html',
 })
 export class PeopleDetailViewPage {
+  public dataDoc: any;
 
-  public tracking: any = 'detail';
+  public tracking: any = 'status';
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
-    public viewCtrl: ViewController
+    public siaphDocumentsApi: SiaphDocumentsApi,
+    public viewCtrl: ViewController,
+    public alertCtrl: AlertController,
+    public siaphTrackingdocumentsApi: SiaphTrackingdocumentsApi,
+    public siaphDepthroleApi: SiaphDepthroleApi,
+    public loadingCtrl: LoadingController,
   ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PeopleDetailViewPage');
+    this.dataDoc = this.navParams.get('data');
   }
 
   public exit() {
