@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -9,11 +9,22 @@ import { IonicPage, NavController, ToastController } from 'ionic-angular';
 })
 export class HomePage {
 
+  public trackingPage: any;
+
   constructor(
     public navCtrl: NavController,
-    private toast: ToastController
+    private toast: ToastController,
+    public storage: Storage
   ) {
-
+    // this.storage.ready().then(() => {
+    //   this.storage.get('siaphCredential').then((siaphCredential) => {
+    //     if (siaphCredential != null || siaphCredential != undefined) {
+    //       this.trackingPage = this.navCtrl.setRoot('DashboardTrackingPage', { tabSet: 'HOME' });
+    //     } else {
+    //       this.trackingPage = this.navCtrl.setRoot('TrackingPage');
+    //     }
+    //   });
+    // });
   }
 
   public perda() {
@@ -27,7 +38,15 @@ export class HomePage {
   }
 
   public tracking() {
-    this.navCtrl.setRoot('TrackingPage');
+    this.storage.ready().then(() => {
+      this.storage.get('siaphCredential').then((siaphCredential) => {
+        if (siaphCredential != null || siaphCredential != undefined) {
+          this.navCtrl.setRoot('DashboardTrackingPage', { tabSet: 'HOME' });
+        } else {
+          this.navCtrl.setRoot('TrackingPage');
+        }
+      });
+    });
   }
 
   public kontak() {
