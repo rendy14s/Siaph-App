@@ -19,6 +19,8 @@ import moment from 'moment';
   templateUrl: 'detail-tracking.html',
 })
 export class DetailTrackingPage {
+  public date2: string;
+  public date1: any;
 
   @ViewChild('mySlider') mySlider: any;
   public DOCUMENTS: string = "DOC";
@@ -113,6 +115,10 @@ export class DetailTrackingPage {
         }).subscribe(result1 => {
           this.dataTracking = result1;
           console.log(this.dataTracking, 'Data Tracking');
+          this.date1 = this.dataTracking[0]['editedDate']
+          console.log(this.date1, 'DATE 1');
+          this.date2 = moment(this.date1).startOf('hour').fromNow();
+          console.log(this.date2, 'DATE 2');
           this.dataTrackingLength = this.dataTracking.length;
           const dataLast = this.dataTracking[this.dataTrackingLength - 1];
           this.statusDisposisi = dataLast.statusDisposisi;
@@ -126,6 +132,7 @@ export class DetailTrackingPage {
             console.log(result2[0]['nameRole'], 'ROLEEE 3');
             result2['RoleFrom'] = result2[0]['nameRole'];
             this.dataTemp = result2;
+            console.log(this.dataTemp, 'DATATEMP');
 
             if (this.statusDisposisi == 'Closed') {
               this.showFinish = true;

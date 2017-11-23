@@ -41,7 +41,7 @@ export class HomePage {
     this.storage.ready().then(() => {
       this.storage.get('siaphCredential').then((siaphCredential) => {
         if (siaphCredential != null || siaphCredential != undefined) {
-          this.navCtrl.setRoot('DashboardTrackingPage', { tabSet: 'HOME' });
+          this.navCtrl.setRoot('DashboardTrackingPage');
         } else {
           this.navCtrl.setRoot('TrackingPage');
         }

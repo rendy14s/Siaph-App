@@ -35,6 +35,7 @@
                 <div class="mdl-stepper-horizontal-alternative">
 
                   <ion-slide>
+                    <h6>{{date1 | relativeTime}}</h6>
                     <div class="mdl-stepper-step active-step">
                       <div class="mdl-stepper-circle">
                         <span>
@@ -47,6 +48,7 @@
                   </ion-slide>
 
                   <ion-slide *ngFor="let datas of dynamicData">
+                    <h6>{{date1 | relativeTime}}</h6>
                     <div class="mdl-stepper-step active-step">
                       <div class="mdl-stepper-circle">
                         <span>
@@ -58,7 +60,9 @@
                       <div class="mdl-stepper-bar-right"></div>
                     </div>
                   </ion-slide>
+
                   <ion-slide [hidden]="shiwFinish">
+                    <h6 style="color: white;">{{date1 | relativeTime}}</h6>
                     <div class="mdl-stepper-step">
                       <div class="mdl-stepper-circle">
                         <span>
@@ -71,6 +75,7 @@
                   </ion-slide>
 
                   <ion-slide [hidden]="showFinish">
+                    <h6 style="color: white;">{{date1 | relativeTime}}</h6>
                     <div class="mdl-stepper-step">
                       <div class="mdl-stepper-circle">
                         <span>
@@ -104,10 +109,10 @@
           <ion-textarea rows="4" [(ngModel)]="docSubject" disabled></ion-textarea>
         </ion-item>
 
-        <ion-item>
+        <!-- <ion-item>
           <ion-label floating style="margin-bottom: 20px !important;font-size: 13px;">Agenda Number</ion-label>
           <ion-textarea rows="2" [(ngModel)]="agendaNo" disabled></ion-textarea>
-        </ion-item>
+        </ion-item> -->
 
       </ion-list>
 

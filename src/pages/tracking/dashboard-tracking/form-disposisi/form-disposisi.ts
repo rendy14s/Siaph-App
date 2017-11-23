@@ -56,6 +56,8 @@ export class FormDisposisiPage {
 
   public CurrentDate: any;
   public dataTracking: any;
+  public myDate: any;
+  public youDate: any;
 
 
   constructor(
@@ -107,7 +109,7 @@ export class FormDisposisiPage {
       'selectto': ['TIM PEMBAHASAN RAPERWAL', Validators.compose([Validators.required])],
       'nodoc': ['', Validators.compose([Validators.required])],
       'receiptDate': [this.receiptDate, Validators.compose([Validators.required])],
-      'noAgenda': ['', Validators.compose([Validators.required])],
+      // 'noAgenda': ['', Validators.compose([Validators.required])],
       'subject': ['', Validators.compose([Validators.required])],
       'noted': ['', Validators.compose([Validators.required])],
     });
@@ -176,15 +178,16 @@ export class FormDisposisiPage {
   }
 
   public submit() {
-
+    this.myDate = moment(this.myDate).add(1, 'seconds');
+    this.youDate = new Date(this.myDate);
     const dataDoc = {
       noDoc: this.disposisiForm.controls.nodoc.value,
       fromDoc: this.idStorage,
       toDoc: this.disposisiForm.controls.selectto.value,
       dateDoc: this.receiptDate,
-      noAgendaDoc: this.disposisiForm.controls.noAgenda.value,
+      // noAgendaDoc: this.disposisiForm.controls.noAgenda.value,
       subjectDoc: this.disposisiForm.controls.subject.value,
-      createDateDoc: this.formatDate(),
+      createDateDoc: this.youDate,
       publishedByDoc: this.userName
     };
     console.log(dataDoc, 'DataDoc');
@@ -199,8 +202,8 @@ export class FormDisposisiPage {
         fromDoc: this.idStorage,
         toDoc: this.disposisiForm.controls.selectto.value,
         statusDisposisi: 'Open',
-        prosesDate: this.formatDate(),
-        editedDate: this.formatDate(),
+        prosesDate: this.youDate,
+        editedDate: this.youDate,
         editedBy: this.userName
       };
 
@@ -211,7 +214,7 @@ export class FormDisposisiPage {
         const dataNoteDoc = {
           idTracking: this.dataTracking.idTracking,
           idDoc: this.dataTracking.idDoc,
-          dateNoted: this.formatDate(),
+          dateNoted: this.youDate,
           notesDoc: this.disposisiForm.controls.noted.value,
         };
 

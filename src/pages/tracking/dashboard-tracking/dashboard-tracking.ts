@@ -59,7 +59,8 @@ export class DashboardTrackingPage {
   }
 
   ionViewDidLoad() {
-    this.tab = this.navParams.get('tabSet')
+    // this.tab = this.navParams.get('tabSet')
+    this.tab = 'HOME';
 
     let loader = this.loadingCtrl.create({
       duration: 3000
