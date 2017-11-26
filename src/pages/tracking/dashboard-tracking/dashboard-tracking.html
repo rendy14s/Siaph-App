@@ -135,7 +135,7 @@
 
     <ion-list *ngSwitchCase="'TRACKING'">
       <ion-list [hidden]="isView">
-        <ion-item (click)="detailTracking(datas.idDoc)" *ngFor="let datas of dataDocument">
+        <ion-item (click)="detailTracking(datas)" *ngFor="let datas of dataDocument">
           <ion-avatar item-start>
             <img src="assets/image/logo-tangsel.png">
           </ion-avatar>

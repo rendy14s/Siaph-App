@@ -67,11 +67,23 @@ export class DashboardTrackingPage {
     });
     loader.present();
 
-    this.photo = 'assets/image/logo-tangsel.png';
+    
     
     this.storage.ready().then(() => {
       this.storage.get('siaphCredential').then((siaphCredential) => {
         this.storageData = siaphCredential;
+        console.log(this.storageData, 'STORAGE NYA');
+
+        if (this.storageData.depthCode == 'WALIKOTA') {
+          this.photo = 'assets/image/garuda.png';
+        } else if (this.storageData.depthCode == 'W-WALIKOTA') {
+          this.photo = 'assets/image/garuda.png';
+        }else if (this.storageData.depthCode == 'DPRD') {
+          this.photo = 'assets/image/dprd-tangsel.jpg';
+        }else {
+          this.photo = 'assets/image/logo-tangsel.png';
+        }
+
         this.accessRoot = this.storageData.access;
         this.name = this.storageData.depthCode;
         this.idStorage = this.storageData.idUser;
@@ -134,8 +146,11 @@ export class DashboardTrackingPage {
   }
 
   public detailTracking($event) {
-    const docId = $event;
-    this.navCtrl.push('DetailTrackingPage', { idDoc: docId });
+    console.log($event);
+    const docId = $event.idDoc;
+    const docNo = $event.noDoc;
+
+        this.navCtrl.push('DetailTrackingPage', { idDoc: docId, noDoc: docNo });
   }
 
   public createDisposisi() {
