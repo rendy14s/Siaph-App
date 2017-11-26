@@ -19,6 +19,7 @@ import moment from 'moment';
   templateUrl: 'detail-tracking.html',
 })
 export class DetailTrackingPage {
+
   public date2: string;
   public date1: any;
 
@@ -26,6 +27,7 @@ export class DetailTrackingPage {
   public DOCUMENTS: string = "DOC";
 
   public idDoc: any;
+  public noDocs: any;
   public dataTracking: any;
   public dataTrackingLength: any;
   public dynamicData: any = [];
@@ -87,7 +89,10 @@ export class DetailTrackingPage {
 
   ionViewDidLoad() {
     this.idDoc = this.navParams.get('idDoc');
+    this.noDocs = this.navParams.get('noDoc');
 
+    console.log(this.idDoc, 'ID NYA DOC');
+    console.log(this.noDocs, 'NO NYA DOC');
     let loadPub = this.loadingCtrl.create({
       content: 'Please wait...'
     });
@@ -103,7 +108,11 @@ export class DetailTrackingPage {
         this.userName = this.storageData.username;
         this.idStorage = this.storageData.idUser;
 
-        this.siaphDepthroleApi.find().subscribe((result) => {
+        this.siaphDepthroleApi.find({
+          where: {
+            idUser: { nlike: this.idStorage }
+          }
+        }).subscribe((result) => {
           this.dataDepthRole = result;
           console.log(this.dataDepthRole, 'Data Role');
         });
@@ -115,47 +124,114 @@ export class DetailTrackingPage {
         }).subscribe(result1 => {
           this.dataTracking = result1;
           console.log(this.dataTracking, 'Data Tracking');
-          this.date1 = this.dataTracking[0]['editedDate']
-          console.log(this.date1, 'DATE 1');
-          this.date2 = moment(this.date1).startOf('hour').fromNow();
-          console.log(this.date2, 'DATE 2');
-          this.dataTrackingLength = this.dataTracking.length;
-          const dataLast = this.dataTracking[this.dataTrackingLength - 1];
-          this.statusDisposisi = dataLast.statusDisposisi;
-          console.log(this.statusDisposisi);
 
-          this.siaphDepthroleApi.find({
-            where: {
-              idRole: this.dataTracking[0]['fromDoc']
-            }
-          }).subscribe((result2) => {
-            console.log(result2[0]['nameRole'], 'ROLEEE 3');
-            result2['RoleFrom'] = result2[0]['nameRole'];
-            this.dataTemp = result2;
-            console.log(this.dataTemp, 'DATATEMP');
+          if (this.dataTracking.length == 0) {
+            console.log(123123);
+            this.siaphTrackingdocumentsApi.find({
+              where: {
+                noDoc: this.noDocs
+              }
+            }).subscribe(result => {
+              console.log(result, 'CKCKCKCCKCK');
+              this.dataTracking = result;
+              loadPub.dismiss();
 
-            if (this.statusDisposisi == 'Closed') {
-              this.showFinish = true;
-              this.shiwFinish = false;
-            } else if (this.statusDisposisi == 'Open') {
-              this.showFinish = false;
-              this.shiwFinish = true;
-            }
+              this.date1 = this.dataTracking[0]['editedDate']
+              console.log(this.date1, 'DATE 1');
+              this.date2 = moment(this.date1).startOf('hour').fromNow();
+              console.log(this.date2, 'DATE 2');
+              this.dataTrackingLength = this.dataTracking.length;
+              const dataLast = this.dataTracking[this.dataTrackingLength - 1];
+              this.statusDisposisi = dataLast.statusDisposisi;
+              console.log(this.statusDisposisi);
 
-            loadPub.dismiss();
-
-            for (let i = 0; i < this.dataTrackingLength; i++) {
               this.siaphDepthroleApi.find({
                 where: {
-                  idRole: this.dataTracking[i].toDoc
+                  idRole: this.dataTracking[0]['fromDoc']
                 }
-              }).subscribe((result3) => {
-                console.log(result3[0]['nameRole'], 'ROLEEE 1');
-                this.dynamicData[i] = result3[0]['nameRole'];
-                this.arrayLength = this.dynamicData.length - 1;
+              }).subscribe((result2) => {
+                console.log(result2[0]['nameRole'], 'ROLEEE 3');
+                result2['RoleFrom'] = result2[0]['nameRole'];
+                this.dataTemp = result2;
+                console.log(this.dataTemp, 'DATATEMP');
+
+                if (this.statusDisposisi == 'Closed') {
+                  this.showFinish = true;
+                  this.shiwFinish = false;
+                } else if (this.statusDisposisi == 'Open') {
+                  this.showFinish = false;
+                  this.shiwFinish = true;
+                }
+
+                for (let i = 0; i < this.dataTrackingLength; i++) {
+                  this.siaphDepthroleApi.find({
+                    where: {
+                      idRole: this.dataTracking[i].toDoc
+                    }
+                  }).subscribe((result3) => {
+                    console.log(result3[0]['nameRole'], 'ROLEEE 1');
+                    this.dynamicData[i] = result3[0]['nameRole'];
+                    this.arrayLength = this.dynamicData.length - 1;
+                  });
+                }
               });
-            }
+            });
+          } else {
+
+            this.date1 = this.dataTracking[0]['editedDate']
+            console.log(this.date1, 'DATE 1');
+            this.date2 = moment(this.date1).startOf('hour').fromNow();
+            console.log(this.date2, 'DATE 2');
+            this.dataTrackingLength = this.dataTracking.length;
+            const dataLast = this.dataTracking[this.dataTrackingLength - 1];
+            this.statusDisposisi = dataLast.statusDisposisi;
+            console.log(this.statusDisposisi);
+
+            this.siaphDepthroleApi.find({
+              where: {
+                idRole: this.dataTracking[0]['fromDoc']
+              }
+            }).subscribe((result2) => {
+              console.log(result2[0]['nameRole'], 'ROLEEE 3');
+              result2['RoleFrom'] = result2[0]['nameRole'];
+              this.dataTemp = result2;
+              console.log(this.dataTemp, 'DATATEMP');
+
+              if (this.statusDisposisi == 'Closed') {
+                this.showFinish = true;
+                this.shiwFinish = false;
+              } else if (this.statusDisposisi == 'Open') {
+                this.showFinish = false;
+                this.shiwFinish = true;
+              }
+
+              loadPub.dismiss();
+
+              for (let i = 0; i < this.dataTrackingLength; i++) {
+                this.siaphDepthroleApi.find({
+                  where: {
+                    idRole: this.dataTracking[i].toDoc
+                  }
+                }).subscribe((result3) => {
+                  console.log(result3[0]['nameRole'], 'ROLEEE 1');
+                  this.dynamicData[i] = result3[0]['nameRole'];
+                  this.arrayLength = this.dynamicData.length - 1;
+                });
+              }
+            });
+          }
+        }, (error) => {
+          let alert = this.alertCtrl.create({
+            subTitle: " No Internet Access! Cek your connection",
+            buttons: [
+              {
+                text: 'Dismiss',
+                handler: () => {
+                  this.navCtrl.setRoot('DashboardTrackingPage');
+                }
+              }]
           });
+          alert.present();
         });
       });
     });
@@ -213,10 +289,27 @@ export class DetailTrackingPage {
 
               this.siaphTrackingdocumentsApi.create(dataApproved).subscribe((result) => {
                 console.log(result);
+
+                const datasDocument = {
+                  noDoc: this.docNo,
+                  fromDoc: this.idStorage,
+                  toDoc: this.selectto,
+                  dateDoc: this.formatDate(),
+                  subjectDoc: this.dataDoc.subjectDoc,
+                  createDateDoc: this.formatDate(),
+                  publishedByDoc: this.userName
+                };
+
+                this.siaphDocumentsApi.create(datasDocument).subscribe(result => {
+                  console.log('Sukses yaaa');
+                }, (error) => {
+                  console.log(error, 'ERROR yaaa');
+                });
+
                 this.datax = result;
                 const dataNoted = {
                   idTracking: this.datax.idTracking,
-                  idDoc: this.datax.idDoc,
+                  idDoc: this.datax.docNo,
                   dateNoted: this.formatDate(),
                   fromNote: this.idStorage,
                   notesDoc: this.noted
@@ -272,6 +365,22 @@ export class DetailTrackingPage {
           notesDoc: this.noted
         };
 
+        const datasDocument = {
+          noDoc: this.docNo,
+          fromDoc: this.idStorage,
+          toDoc: this.selectto,
+          dateDoc: this.formatDate(),
+          subjectDoc: this.dataDoc.subjectDoc,
+          createDateDoc: this.formatDate(),
+          publishedByDoc: this.userName
+        };
+
+        this.siaphDocumentsApi.create(datasDocument).subscribe(result => {
+          console.log('Sukses yaaa');
+        }, (error) => {
+          console.log(error, 'ERROR yaaa');
+        });
+
         if (this.noted == null || this.noted == undefined) {
           let toast = this.toastCtrl.create({
             message: 'Success Disposisi!',
@@ -300,6 +409,8 @@ export class DetailTrackingPage {
   }
 
   public loadNoted() {
+    console.log('COMMENT LOAD');
+    console.log(this.idDoc, 'ID NYA NOTE');
     this.siaphNoteddocumentsApi.find({
       where: {
         idDoc: this.idDoc
@@ -307,28 +418,55 @@ export class DetailTrackingPage {
     }).subscribe((result) => {
       // console.log(result, 'Komentar Doc');
       this.notes = result;
-
-      for (let a = 0; a < this.notes.length; a++) {
-        this.siaphDepthroleApi.find({
-          where: {
-            idRole: this.idStorage
-          }
-        }).subscribe((result) => {
-          this.peopleNote = result;
-          console.log(this.peopleNote, 'People');
-          console.log(this.peopleNote[a]['nameRole'], 'ROLEEE 2');
-          this.notes[a]['peopleNotes'] = this.peopleNote[a]['nameRole'];
-        });
-      }
-      console.log(this.notes, 'Komentar Doc');
       if (this.notes.length == 0) {
-        this.listNotesView = true;
-        this.listNotesShow = false;
-      } else {
-        this.listNotesView = false;
-        this.listNotesShow = true;
-      }
+        this.siaphNoteddocumentsApi.find({
+          where: {
+            idDoc: this.noDocs
+          }
+        }).subscribe(resultss => {
+          this.notes = resultss
+          console.log(this.notes, 'HAVANA');
+          console.log(this.notes.length, 'Komentar Doc');
 
+          if (this.notes.length == 0) {
+            this.listNotesView = true;
+            this.listNotesShow = false;
+          } else {
+            this.listNotesView = false;
+            this.listNotesShow = true;
+          }
+        });
+      } else {
+
+        console.log(this.notes.length, 'Komentar Doc');
+        // for (let a = 0; a < this.notes.length; a++) {
+        //   this.siaphDepthroleApi.find({
+        //     where: {
+        //       idRole: this.idStorage
+        //     }
+        //   }).subscribe((result) => {
+        //     this.peopleNote = result;
+        //     console.log(this.peopleNote, 'People');
+        //     console.log(this.peopleNote[a]['nameRole'], 'ROLEEE 2');
+        //     this.notes[a]['peopleNotes'] = this.peopleNote[a]['nameRole'];
+        //   });
+        // }
+
+        if (this.notes.length == 0) {
+          this.listNotesView = true;
+          this.listNotesShow = false;
+        } else {
+          this.listNotesView = false;
+          this.listNotesShow = true;
+        }
+      }
+    }, (error) => {
+      let toast = this.toastCtrl.create({
+        message: 'Error Load Noted',
+        duration: 3000,
+        position: 'bottom'
+      });
+      toast.present();
     });
   }
 
