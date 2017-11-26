@@ -195,7 +195,7 @@ export class FormDisposisiPage {
 
       console.log(result);
       this.dataDoc = result;
-      this.idDocument = this.dataDoc.idDoc;
+      this.idDocument = this.dataDoc.noDoc;
 
       const dataDocTracking = {
         idDoc: this.idDocument,
@@ -216,6 +216,7 @@ export class FormDisposisiPage {
           idDoc: this.dataTracking.idDoc,
           dateNoted: this.youDate,
           notesDoc: this.disposisiForm.controls.noted.value,
+          fromNote: this.idStorage
         };
 
         this.siaphNoteddocumentsApi.create(dataNoteDoc).subscribe((result) => {
