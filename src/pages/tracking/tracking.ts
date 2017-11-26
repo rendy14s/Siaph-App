@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { SiaphDocumentsApi } from './../../shared/sdk/services/custom/SiaphDocuments';
 /**
  * Generated class for the TrackingPage page.
@@ -21,6 +21,7 @@ export class TrackingPage {
     public navParams: NavParams,
     public modalCtrl: ModalController,
     public siaphDocumentsApi: SiaphDocumentsApi,
+    public alertCtrl: AlertController
   ) {
     
   }
@@ -36,8 +37,14 @@ export class TrackingPage {
   }
 
   public modalShow(event) {
-    let view = this.modalCtrl.create('PeopleDetailViewPage', { data: event });
-    view.present();
+    // let view = this.modalCtrl.create('PeopleDetailViewPage', { data: event });
+    // view.present();
+
+    let alert = this.alertCtrl.create({
+      subTitle: 'Ups.. Sorry! this feature under migration database',
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
   public login() {
