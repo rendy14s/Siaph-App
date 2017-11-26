@@ -129,7 +129,7 @@ export class DetailTrackingPage {
             console.log(123123);
             this.siaphTrackingdocumentsApi.find({
               where: {
-                noDoc: this.noDocs
+                idDoc: this.noDocs
               }
             }).subscribe(result => {
               console.log(result, 'CKCKCKCCKCK');

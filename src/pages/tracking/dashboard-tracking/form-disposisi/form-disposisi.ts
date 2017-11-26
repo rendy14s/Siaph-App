@@ -226,6 +226,7 @@ export class FormDisposisiPage {
             namePhoto: this.fileName
           };
 
+          console.log(library, 'DATA POTO');
           this.siaphDocumentslibraryApi.create(library).subscribe((result) => {
             console.log('Sukses foto insert database');
           }, (error) => {
