@@ -37,14 +37,14 @@ export class TrackingPage {
   }
 
   public modalShow(event) {
-    // let view = this.modalCtrl.create('PeopleDetailViewPage', { data: event });
-    // view.present();
+    let view = this.modalCtrl.create('PeopleDetailViewPage', { data: event });
+    view.present();
 
-    let alert = this.alertCtrl.create({
-      subTitle: 'Ups.. Sorry! this feature under migration database',
-      buttons: ['Dismiss']
-    });
-    alert.present();
+    // let alert = this.alertCtrl.create({
+    //   subTitle: 'Ups.. Sorry! this feature under migration database',
+    //   buttons: ['Dismiss']
+    // });
+    // alert.present();
   }
 
   public login() {

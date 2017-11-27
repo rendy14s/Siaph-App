@@ -171,6 +171,7 @@ export class DetailTrackingPage {
                   }).subscribe((result3) => {
                     console.log(result3[0]['nameRole'], 'ROLEEE 1');
                     this.dynamicData[i] = result3[0]['nameRole'];
+                    console.log(this.dynamicData, 'HAVAN');
                     this.arrayLength = this.dynamicData.length - 1;
                   });
                 }

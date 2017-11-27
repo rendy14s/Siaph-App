@@ -16,13 +16,13 @@
 
   <ion-grid>
     <ion-row style="background-color: #ffffff">
-      <ion-col col-4>No. Surat</ion-col>
-      <ion-col col-4>Perihal</ion-col>
+      <ion-col col-4>No.</ion-col>
+      <ion-col col-4>Subject</ion-col>
       <ion-col col-4>Created</ion-col>
     </ion-row>
 
     <div class="container-table">
-      <ion-row (click)="modalShow(datas.idDoc)" *ngFor="let datas of dataDocuments" style="background-color: #ffffff">
+      <ion-row (click)="modalShow(datas)" *ngFor="let datas of dataDocuments" style="background-color: #ffffff">
         <ion-col col-4>{{datas.idDoc}}</ion-col>
         <ion-col col-4 text-wrap>{{datas.subjectDoc}}</ion-col>
         <ion-col col-4>{{datas.createDateDoc | date:'short'}}</ion-col>
