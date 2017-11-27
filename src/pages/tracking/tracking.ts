@@ -28,7 +28,8 @@ export class TrackingPage {
 
   ionViewDidLoad() {
     const limit = {
-      limit: 3
+      limit: 3,
+      order: 'idDoc DESC'
     }
     this.siaphDocumentsApi.getDataDocumentAll(limit).subscribe(result => {
       console.log(result, 'Result');

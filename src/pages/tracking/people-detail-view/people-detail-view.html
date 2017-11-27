@@ -43,7 +43,7 @@
                           <ion-icon name="information"></ion-icon>
                         </span>
                       </div>
-                      <div class="mdl-stepper-title">{{dataTemp.RoleFrom}}</div>
+                      <div class="mdl-stepper-title" *ngFor="let datasx of dataTemp">{{datasx.nameRole}}</div>
                       <div class="mdl-stepper-bar-right"></div>
                     </div>
                   </ion-slide>
