@@ -9,7 +9,6 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import { FileOpener } from '@ionic-native/file-opener';
 
 import { MyApp } from './app.component';
-import { TabsPage } from '../pages/tabs/tabs';
 
 
 import { SDKBrowserModule } from '../shared/sdk/index';
@@ -20,10 +19,10 @@ import { OneSignal } from '@ionic-native/onesignal';
 
 
 
+
 @NgModule({
   declarations: [
-    MyApp,
-    TabsPage
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -36,7 +35,6 @@ import { OneSignal } from '@ionic-native/onesignal';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    TabsPage
   ],
   providers: [
     StatusBar,
