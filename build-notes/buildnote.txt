@@ -1,5 +1,5 @@
 password :
 myadmin14
 
-1.   jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore HelloWorld-release-unsigned.apk alias_name
+1.   jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-release-unsigned.apk alias_name
 2.   /Users/rendy/Library/Android/sdk/build-tools/26.0.2/zipalign -v 4 android-release-unsigned.apk Siaph.apk

@@ -20,6 +20,7 @@ declare var cordova: any;
   templateUrl: 'perwal.html',
 })
 export class PerwalPage {
+  public pathFile: any;
 
   public datas: any;
   public filename: any;
@@ -121,18 +122,18 @@ export class PerwalPage {
             const fileTransfer: FileTransferObject = this.transfer.create();
             this.link = datax.url_file;
             this.filename = datax.file_name_server;
-            this.localPath = cordova.file.documentsDirectory + this.filename;
+            this.localPath = cordova.file.externalCacheDirectory + this.filename;
 
             fileTransfer.download(this.link, this.localPath)
               .then((entry) => {
                 console.log('download sukses');
                 this.loading.dismiss();
 
-                this.open = entry;
-                this.fileOpener.open(entry.toURL(), 'application/pdf')
-                  .then(() => console.log('File is opened'))
-                  .catch(e => console.log('Error openening file', e));
-
+                this.pathFile = entry;
+                this.fileOpener.open(this.pathFile.nativeURL, 'application/pdf')
+                .then(() => console.log('File is opened'))
+                .catch(e => console.log('Error openening file', e));
+                
               }, (error) => {
                 this.loading.dismiss();
                 let alertFailure = this.alertCtrl.create({

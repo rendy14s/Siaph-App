@@ -19,6 +19,7 @@ declare var cordova: any;
   templateUrl: 'perda.html',
 })
 export class PerdaPage {
+  public pathFile: any;
 
   public datas: any;
   public filename: any;
@@ -117,23 +118,27 @@ export class PerdaPage {
           text: 'Download File and Read File',
           handler: () => {
             this.loader();
+            console.log('Download Start');
             const fileTransfer: FileTransferObject = this.transfer.create();
             this.link = datax.url_file;
             this.filename = datax.file_name_server;
-            this.localPath = cordova.file.documentsDirectory + this.filename;
+            this.localPath = cordova.file.externalCacheDirectory + this.filename;
 
-            fileTransfer.download(this.link, this.localPath)
-              .then((entry) => {
-                console.log('download sukses');
+            console.log(this.link, 'LINK');
+            console.log(this.localPath, 'PATH');
+
+            fileTransfer.download(this.link, this.localPath).then((entry) => {
+              this.loading.dismiss();
+              console.log(entry, 'ENTRY');
+
+              this.pathFile = entry;
+              this.fileOpener.open(this.pathFile.nativeURL, 'application/pdf')
+              .then(() => console.log('File is opened'))
+              .catch(e => console.log('Error openening file', e));
+
+            }, (error) => {
                 this.loading.dismiss();
-
-                this.open = entry;
-                this.fileOpener.open(entry.toURL(), 'application/pdf')
-                  .then(() => console.log('File is opened'))
-                  .catch(e => console.log('Error openening file', e));
-
-              }, (error) => {
-                this.loading.dismiss();
+                console.log('Download End');
                 let alertFailure = this.alertCtrl.create({
                   title: 'Download Failed!',
                   subTitle: 'Cek your Connection Internet.',
