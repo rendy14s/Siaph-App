@@ -15,7 +15,7 @@ import { SDKBrowserModule } from '../shared/sdk/index';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Camera } from '@ionic-native/camera';
 import { OneSignal } from '@ionic-native/onesignal';
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 
 
@@ -43,6 +43,7 @@ import { OneSignal } from '@ionic-native/onesignal';
     Camera,
     OneSignal,
     FileOpener,
+    ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
