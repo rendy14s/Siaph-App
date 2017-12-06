@@ -178,6 +178,11 @@ export class FormDisposisiPage {
   }
 
   public submit() {
+    this.loadPub = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    this.loadPub.present();
+
     this.myDate = moment(this.myDate).add(1, 'seconds');
     this.youDate = new Date(this.myDate);
     const dataDoc = {
@@ -233,6 +238,8 @@ export class FormDisposisiPage {
             console.log('Error Insert foto Database');
           });
           
+          this.loadPub.dismiss();
+
           let confirm = this.alertCtrl.create({
             message: 'Success Disposisi',
             buttons: [
@@ -248,6 +255,8 @@ export class FormDisposisiPage {
         });
       })
     }, (error) => {
+      this.loadPub.dismiss();
+      
       let alert = this.alertCtrl.create({
         subTitle: 'Ups.. Sorry! please fill the blank column',
         buttons: ['Dismiss']
