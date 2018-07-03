@@ -58,7 +58,7 @@ export class PerwalPage {
       content: 'Loading posts...'
     });
     loadingPopup.present();
-    this.http.get('http://jdih.awd.web.id/index.php/JsonPerwal/Data').map(res => res.json()).subscribe(data => {
+    this.http.get('http://jdih.tangerangselatankota.go.id/siaph_api/perwal').map(res => res.json()).subscribe(data => {
       this.items = data['data'];
       loadingPopup.dismiss();
     }, (error) => {
@@ -88,7 +88,7 @@ export class PerwalPage {
 
   public initializeItems(val) {
     if (val == '') {
-      this.http.get('http://jdih.awd.web.id/index.php/JsonPerwal/Data').map(res => res.json()).subscribe(data => {
+      this.http.get('http://jdih.tangerangselatankota.go.id/siaph_api/perwal').map(res => res.json()).subscribe(data => {
         this.posts = data['data'];
       }, (error) => {
         this.posts = [];

@@ -57,7 +57,7 @@ export class PerdaPage {
       content: 'Loading posts...'
     });
     loadingPopup.present();
-    this.http.get('http://jdih.awd.web.id/index.php/JsonPerda/Data').map(res => res.json()).subscribe(data => {
+    this.http.get('http://jdih.tangerangselatankota.go.id/siaph_api/perda').map(res => res.json()).subscribe(data => {
       this.items = data['data'];
       loadingPopup.dismiss();
     }, (error) => {
@@ -87,7 +87,7 @@ export class PerdaPage {
 
   public initializeItems(val) {
     if (val == '') {
-      this.http.get('http://jdih.awd.web.id/index.php/JsonPerda/Data').map(res => res.json()).subscribe(data => {
+      this.http.get('http://jdih.tangerangselatankota.go.id/siaph_api/perda').map(res => res.json()).subscribe(data => {
         this.posts = data['data'];
       }, (error) => {
         this.posts = [];
